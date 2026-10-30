@@ -16,48 +16,48 @@ var ICONS = {
 };
 
 var TABS = [
-  { k: "hosp", n: "Hospedagem", d: "Pousadas e chal\u00e9s", g: ["#e7b48f", "#8a5a44"] },
-  { k: "casa", n: "Casas de temporada", d: "Casas inteiras", g: ["#e0a67e", "#7a4a35"] },
-  { k: "passeio", n: "Passeios", d: "Buggy, kite e mais", g: ["#e8b86a", "#9c5334"] },
-  { k: "transfer", n: "Transfer", d: "Aeroporto de Fortaleza", g: ["#d9b19b", "#6b4a3d"] },
-  { k: "alug", n: "Alugu\u00e9is", d: "Quadriciclo e bike", g: ["#e7b48f", "#9c5334"] }
+  { k: "hosp", n: "Hospedagem", d: "Pousadas e chal\u00e9s", g: ["#f4c06a", "#cf6b12"] },
+  { k: "casa", n: "Casas de temporada", d: "Casas inteiras", g: ["#f0ab50", "#b25a0d"] },
+  { k: "passeio", n: "Passeios", d: "Buggy, kite e mais", g: ["#f8d585", "#c2610f"] },
+  { k: "transfer", n: "Transfer", d: "Aeroporto de Fortaleza", g: ["#fbeaa0", "#a34f0a"] },
+  { k: "alug", n: "Alugu\u00e9is", d: "Quadriciclo e bike", g: ["#f4c06a", "#c2610f"] }
 ];
 
 var STYLES = [
-  { k: "hosp", icon: "heart", n: "Rom\u00e2ntico", d: "Pousadas e chal\u00e9s para uma estadia a dois", s: "style-romantico", g: ["#e7b48f", "#8a5a44"] },
-  { k: "casa", icon: "family", n: "Fam\u00edlia", d: "Casas espa\u00e7osas com estrutura para crian\u00e7as", s: "style-familia", g: ["#e0a67e", "#7a4a35"] },
-  { k: "passeio", icon: "mountain", n: "Aventura", d: "Buggy, kite e dunas para quem gosta de adrenalina", s: "style-aventura", g: ["#e8b86a", "#9c5334"] },
-  { k: "passeio", icon: "leaf", n: "Natureza", d: "Lagoas, dunas e p\u00f4r do sol longe da rotina", s: "style-natureza", g: ["#d9b19b", "#6b4a3d"] },
-  { k: "casa", icon: "paw", n: "Pet friendly", d: "Casas que recebem o seu pet", s: "style-pet", g: ["#e0a67e", "#9c5334"] },
-  { k: "hosp", icon: "sun", n: "Fim de semana", d: "Escapadas curtas para recarregar", s: "style-fim-de-semana", g: ["#e7b48f", "#6b4a3d"] }
+  { k: "hosp", icon: "heart", n: "Rom\u00e2ntico", d: "Pousadas e chal\u00e9s para uma estadia a dois", s: "style-romantico", g: ["#f4c06a", "#cf6b12"] },
+  { k: "casa", icon: "family", n: "Fam\u00edlia", d: "Casas espa\u00e7osas com estrutura para crian\u00e7as", s: "style-familia", g: ["#f0ab50", "#b25a0d"] },
+  { k: "passeio", icon: "mountain", n: "Aventura", d: "Buggy, kite e dunas para quem gosta de adrenalina", s: "style-aventura", g: ["#f8d585", "#c2610f"] },
+  { k: "passeio", icon: "leaf", n: "Natureza", d: "Lagoas, dunas e p\u00f4r do sol longe da rotina", s: "style-natureza", g: ["#fbeaa0", "#a34f0a"] },
+  { k: "casa", icon: "paw", n: "Pet friendly", d: "Casas que recebem o seu pet", s: "style-pet", g: ["#f0ab50", "#c2610f"] },
+  { k: "hosp", icon: "sun", n: "Fim de semana", d: "Escapadas curtas para recarregar", s: "style-fim-de-semana", g: ["#f4c06a", "#a34f0a"] }
 ];
 
 var ITEMS = [
-  { t: "hosp", tag: "Pousada", n: "Pousada Brisa do Kite", r: "9,2", v: 128, p: 290, u: "noite", g: ["#e7b48f", "#8a5a44"], s: "brisa-do-kite",
+  { t: "hosp", tag: "Pousada", n: "Pousada Brisa do Kite", r: "9,2", v: 128, p: 290, u: "noite", g: ["#f4c06a", "#cf6b12"], s: "brisa-do-kite",
     d: "Pousada p\u00e9 na areia com piscina, caf\u00e9 da manh\u00e3 regional e vista para o mar.", am: ["Wi-Fi", "Piscina", "Caf\u00e9 da manh\u00e3"] },
-  { t: "hosp", tag: "Chal\u00e9", n: "Chal\u00e9 P\u00f4r do Sol", r: "9,4", v: 86, p: 340, u: "noite", g: ["#e7b48f", "#9c5334"], s: "por-do-sol",
+  { t: "hosp", tag: "Chal\u00e9", n: "Chal\u00e9 P\u00f4r do Sol", r: "9,4", v: 86, p: 340, u: "noite", g: ["#f4c06a", "#c2610f"], s: "por-do-sol",
     d: "Chal\u00e9 privativo com varanda, rede e vista para o p\u00f4r do sol.", am: ["Wi-Fi", "Varanda", "Ar-condicionado"] },
-  { t: "hosp", tag: "Pousada", n: "Pousada Vento Leste", r: "8,9", v: 203, p: 260, u: "noite", g: ["#d9b19b", "#8a5a44"], s: "vento-leste",
+  { t: "hosp", tag: "Pousada", n: "Pousada Vento Leste", r: "8,9", v: 203, p: 260, u: "noite", g: ["#fbeaa0", "#cf6b12"], s: "vento-leste",
     d: "Pousada tranquila perto das dunas, ideal para quem busca sossego.", am: ["Wi-Fi", "Piscina", "Estacionamento"] },
-  { t: "casa", tag: "Casa inteira", n: "Casa Duna Dourada \u00b7 6 pessoas", r: "9,5", v: 41, p: 780, u: "noite", g: ["#e0a67e", "#7a4a35"], s: "duna-dourada",
+  { t: "casa", tag: "Casa inteira", n: "Casa Duna Dourada \u00b7 6 pessoas", r: "9,5", v: 41, p: 780, u: "noite", g: ["#f0ab50", "#b25a0d"], s: "duna-dourada",
     d: "Casa inteira com 3 quartos, piscina e \u00e1rea gourmet a poucos minutos da praia.", am: ["6 h\u00f3spedes", "Piscina", "Cozinha"] },
-  { t: "casa", tag: "Casa inteira", n: "Casa Coqueiral \u00b7 8 pessoas", r: "9,1", v: 57, p: 980, u: "noite", g: ["#e0a67e", "#8a5a44"], s: "coqueiral",
+  { t: "casa", tag: "Casa inteira", n: "Casa Coqueiral \u00b7 8 pessoas", r: "9,1", v: 57, p: 980, u: "noite", g: ["#f0ab50", "#cf6b12"], s: "coqueiral",
     d: "Casa ampla em meio aos coqueiros, com piscina e espa\u00e7o para fam\u00edlias.", am: ["8 h\u00f3spedes", "Piscina", "Churrasqueira"] },
-  { t: "casa", tag: "Casa inteira", n: "Casa Mar\u00e9 Alta \u00b7 4 pessoas", r: "9,3", v: 34, p: 520, u: "noite", g: ["#e7b48f", "#7a4a35"], s: "mare-alta",
+  { t: "casa", tag: "Casa inteira", n: "Casa Mar\u00e9 Alta \u00b7 4 pessoas", r: "9,3", v: 34, p: 520, u: "noite", g: ["#f4c06a", "#b25a0d"], s: "mare-alta",
     d: "Casa aconchegante com dois quartos e varanda, perto do centro.", am: ["4 h\u00f3spedes", "Cozinha", "Ar-condicionado"] },
-  { t: "passeio", tag: "Passeio", n: "Buggy pelas dunas e lagoas", r: "9,7", v: 312, p: 120, u: "pessoa", g: ["#e8b86a", "#9c5334"], s: "buggy-dunas",
+  { t: "passeio", tag: "Passeio", n: "Buggy pelas dunas e lagoas", r: "9,7", v: 312, p: 120, u: "pessoa", g: ["#f8d585", "#c2610f"], s: "buggy-dunas",
     d: "Roteiro guiado pelas dunas e lagoas de Icaraizinho, com paradas para banho.", am: ["Guia local", "Dura\u00e7\u00e3o 3h", "Fotos inclusas"] },
-  { t: "passeio", tag: "Aula", n: "Aula de kitesurf \u00b7 2 h", r: "9,6", v: 148, p: 350, u: "pessoa", g: ["#e7b48f", "#8a5a44"], s: "kitesurf",
+  { t: "passeio", tag: "Aula", n: "Aula de kitesurf \u00b7 2 h", r: "9,6", v: 148, p: 350, u: "pessoa", g: ["#f4c06a", "#cf6b12"], s: "kitesurf",
     d: "Aula para iniciantes com instrutor certificado e equipamento incluso.", am: ["Instrutor", "Equipamento", "2 horas"] },
-  { t: "passeio", tag: "Passeio", n: "P\u00f4r do sol na duna", r: "9,8", v: 205, p: 60, u: "pessoa", g: ["#e0a67e", "#9c5334"], s: "por-do-sol-duna",
+  { t: "passeio", tag: "Passeio", n: "P\u00f4r do sol na duna", r: "9,8", v: 205, p: 60, u: "pessoa", g: ["#f0ab50", "#c2610f"], s: "por-do-sol-duna",
     d: "Passeio curto para ver o p\u00f4r do sol no ponto mais alto da duna.", am: ["Guia local", "Dura\u00e7\u00e3o 1h30", "Fotos inclusas"] },
-  { t: "transfer", tag: "Transfer", n: "Aeroporto de Fortaleza \u2192 Icaraizinho", r: "9,4", v: 97, p: 90, u: "pessoa", g: ["#d9b19b", "#6b4a3d"], s: "transfer-fortaleza",
+  { t: "transfer", tag: "Transfer", n: "Aeroporto de Fortaleza \u2192 Icaraizinho", r: "9,4", v: 97, p: 90, u: "pessoa", g: ["#fbeaa0", "#a34f0a"], s: "transfer-fortaleza",
     d: "Transfer compartilhado com sa\u00edda do aeroporto de Fortaleza.", am: ["Wi-Fi", "Ar-condicionado", "Porta a porta"] },
-  { t: "transfer", tag: "Privativo", n: "Transfer privativo \u00b7 at\u00e9 4 pessoas", r: "9,6", v: 63, p: 520, u: "trajeto", g: ["#d9b19b", "#8a5a44"], s: "transfer-privativo",
+  { t: "transfer", tag: "Privativo", n: "Transfer privativo \u00b7 at\u00e9 4 pessoas", r: "9,6", v: 63, p: 520, u: "trajeto", g: ["#fbeaa0", "#cf6b12"], s: "transfer-privativo",
     d: "Ve\u00edculo privativo com motorista, ideal para fam\u00edlias e grupos.", am: ["At\u00e9 4 pessoas", "Ar-condicionado", "Porta a porta"] },
-  { t: "alug", tag: "Aluguel", n: "Quadriciclo \u00b7 1 hora", r: "9,2", v: 88, p: 180, u: "hora", g: ["#e7b48f", "#9c5334"], s: "quadriciclo",
+  { t: "alug", tag: "Aluguel", n: "Quadriciclo \u00b7 1 hora", r: "9,2", v: 88, p: 180, u: "hora", g: ["#f4c06a", "#c2610f"], s: "quadriciclo",
     d: "Aluguel de quadriciclo com capacete e instru\u00e7\u00f5es de seguran\u00e7a.", am: ["Equipamento", "Seguro", "Instru\u00e7\u00f5es"] },
-  { t: "alug", tag: "Aluguel", n: "Bicicleta \u00b7 di\u00e1ria", r: "9,0", v: 44, p: 40, u: "dia", g: ["#e7b48f", "#7a4a35"], s: "bicicleta",
+  { t: "alug", tag: "Aluguel", n: "Bicicleta \u00b7 di\u00e1ria", r: "9,0", v: 44, p: 40, u: "dia", g: ["#f4c06a", "#b25a0d"], s: "bicicleta",
     d: "Bicicleta para explorar a vila e as praias pr\u00f3ximas no seu ritmo.", am: ["Equipamento", "Seguro", "Di\u00e1ria"] }
 ];
 
