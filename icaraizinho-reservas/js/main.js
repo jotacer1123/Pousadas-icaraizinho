@@ -1,61 +1,124 @@
-var WA="5588999999999"; // troque pelo número real
-var TABS=[
- {k:"hosp",n:"Hospedagem",e:"🏨",d:"Pousadas e chalés",range:true},
- {k:"casa",n:"Casas de temporada",e:"🏡",d:"Casas inteiras",range:true},
- {k:"passeio",n:"Passeios",e:"🏄",d:"Buggy, kite e mais",range:false},
- {k:"transfer",n:"Transfer",e:"🚐",d:"Aeroporto de Fortaleza",range:false},
- {k:"alug",n:"Aluguéis",e:"🛵",d:"Quadriciclo e bike",range:false}
+var WA = "5588999999999";
+var LOCATION = "Icaraizinho de Amontada \u00b7 CE";
+
+var TABS = [
+  { k: "hosp", n: "Hospedagem", e: "\ud83c\udfe8", d: "Pousadas e chal\u00e9s", range: true, g: ["#28666e", "#0f2f36"] },
+  { k: "casa", n: "Casas de temporada", e: "\ud83c\udfe1", d: "Casas inteiras", range: true, g: ["#b84c24", "#7a2e12"] },
+  { k: "passeio", n: "Passeios", e: "\ud83c\udfc4", d: "Buggy, kite e mais", range: false, g: ["#28666e", "#1e6f5c"] },
+  { k: "transfer", n: "Transfer", e: "\ud83d\ude90", d: "Aeroporto de Fortaleza", range: false, g: ["#4f5561", "#1f2937"] },
+  { k: "alug", n: "Alugu\u00e9is", e: "\ud83d\udef5", d: "Quadriciclo e bike", range: false, g: ["#b84c24", "#0f2f36"] }
 ];
-var ITEMS=[
- {t:"hosp",tag:"Pousada",n:"Pousada Brisa do Kite",r:"9,2",v:128,p:290,u:"noite",g:["#FF9A4D","#C2410C"],e:"🏨"},
- {t:"hosp",tag:"Chalé",n:"Chalé Pôr do Sol",r:"9,4",v:86,p:340,u:"noite",g:["#FDBA74","#EA580C"],e:"🛖"},
- {t:"hosp",tag:"Pousada",n:"Pousada Vento Leste",r:"8,9",v:203,p:260,u:"noite",g:["#FB923C","#9A3412"],e:"🌴"},
- {t:"casa",tag:"Casa inteira",n:"Casa Duna Dourada · 6 pessoas",r:"9,5",v:41,p:780,u:"noite",g:["#FDBA74","#B45309"],e:"🏡"},
- {t:"casa",tag:"Casa inteira",n:"Casa Coqueiral · 8 pessoas",r:"9,1",v:57,p:980,u:"noite",g:["#FB923C","#C2410C"],e:"🌴"},
- {t:"casa",tag:"Casa inteira",n:"Casa Maré Alta · 4 pessoas",r:"9,3",v:34,p:520,u:"noite",g:["#FFB26B","#9A3412"],e:"🌊"},
- {t:"passeio",tag:"Passeio",n:"Buggy pelas dunas e lagoas",r:"9,7",v:312,p:120,u:"pessoa",g:["#FDBA74","#C2410C"],e:"🚙"},
- {t:"passeio",tag:"Aula",n:"Aula de kitesurf · 2 h",r:"9,6",v:148,p:350,u:"pessoa",g:["#FB923C","#7C2D12"],e:"🪁"},
- {t:"passeio",tag:"Passeio",n:"Pôr do sol na duna",r:"9,8",v:205,p:60,u:"pessoa",g:["#FFB26B","#B91C1C"],e:"🌅"},
- {t:"transfer",tag:"Transfer",n:"Aeroporto de Fortaleza → Icaraizinho",r:"9,4",v:97,p:90,u:"pessoa",g:["#FDBA74","#9A3412"],e:"🚐"},
- {t:"transfer",tag:"Privativo",n:"Transfer privativo · até 4 pessoas",r:"9,6",v:63,p:520,u:"trajeto",g:["#FB923C","#C2410C"],e:"🚗"},
- {t:"alug",tag:"Aluguel",n:"Quadriciclo · 1 hora",r:"9,2",v:88,p:180,u:"hora",g:["#FF9A4D","#7C2D12"],e:"🛵"},
- {t:"alug",tag:"Aluguel",n:"Bicicleta · diária",r:"9,0",v:44,p:40,u:"dia",g:["#FFB26B","#C2410C"],e:"🚲"}
+
+var AMENITIES = {
+  hosp: ["Wi-Fi", "Piscina", "Caf\u00e9 da manh\u00e3"],
+  casa: ["Wi-Fi", "Cozinha", "Ar-condicionado"],
+  passeio: ["Guia local", "Dura\u00e7\u00e3o 3h", "Fotos inclusas"],
+  transfer: ["Wi-Fi", "Ar-condicionado", "Porta a porta"],
+  alug: ["Equipamento", "Seguro", "Instru\u00e7\u00f5es"]
+};
+
+var ITEMS = [
+  { t: "hosp", tag: "Pousada", n: "Pousada Brisa do Kite", r: "9,2", v: 128, p: 290, u: "noite", g: ["#28666e", "#0f2f36"], e: "\ud83c\udfe8", s: "brisa-do-kite" },
+  { t: "hosp", tag: "Chal\u00e9", n: "Chal\u00e9 P\u00f4r do Sol", r: "9,4", v: 86, p: 340, u: "noite", g: ["#28666e", "#1e6f5c"], e: "\ud83d\uded6", s: "por-do-sol" },
+  { t: "hosp", tag: "Pousada", n: "Pousada Vento Leste", r: "8,9", v: 203, p: 260, u: "noite", g: ["#4f5561", "#0f2f36"], e: "\ud83c\udf34", s: "vento-leste" },
+  { t: "casa", tag: "Casa inteira", n: "Casa Duna Dourada \u00b7 6 pessoas", r: "9,5", v: 41, p: 780, u: "noite", g: ["#b84c24", "#7a2e12"], e: "\ud83c\udfe1", s: "duna-dourada" },
+  { t: "casa", tag: "Casa inteira", n: "Casa Coqueiral \u00b7 8 pessoas", r: "9,1", v: 57, p: 980, u: "noite", g: ["#b84c24", "#0f2f36"], e: "\ud83c\udf34", s: "coqueiral" },
+  { t: "casa", tag: "Casa inteira", n: "Casa Mar\u00e9 Alta \u00b7 4 pessoas", r: "9,3", v: 34, p: 520, u: "noite", g: ["#28666e", "#0f2f36"], e: "\ud83c\udf0a", s: "mare-alta" },
+  { t: "passeio", tag: "Passeio", n: "Buggy pelas dunas e lagoas", r: "9,7", v: 312, p: 120, u: "pessoa", g: ["#28666e", "#1e6f5c"], e: "\ud83d\ude99", s: "buggy-dunas" },
+  { t: "passeio", tag: "Aula", n: "Aula de kitesurf \u00b7 2 h", r: "9,6", v: 148, p: 350, u: "pessoa", g: ["#28666e", "#0f2f36"], e: "\ud83e\ude81", s: "kitesurf" },
+  { t: "passeio", tag: "Passeio", n: "P\u00f4r do sol na duna", r: "9,8", v: 205, p: 60, u: "pessoa", g: ["#b84c24", "#7a2e12"], e: "\ud83c\udf05", s: "por-do-sol-duna" },
+  { t: "transfer", tag: "Transfer", n: "Aeroporto de Fortaleza \u2192 Icaraizinho", r: "9,4", v: 97, p: 90, u: "pessoa", g: ["#4f5561", "#1f2937"], e: "\ud83d\ude90", s: "transfer-fortaleza" },
+  { t: "transfer", tag: "Privativo", n: "Transfer privativo \u00b7 at\u00e9 4 pessoas", r: "9,6", v: 63, p: 520, u: "trajeto", g: ["#4f5561", "#0f2f36"], e: "\ud83d\ude97", s: "transfer-privativo" },
+  { t: "alug", tag: "Aluguel", n: "Quadriciclo \u00b7 1 hora", r: "9,2", v: 88, p: 180, u: "hora", g: ["#b84c24", "#0f2f36"], e: "\ud83d\udef5", s: "quadriciclo" },
+  { t: "alug", tag: "Aluguel", n: "Bicicleta \u00b7 di\u00e1ria", r: "9,0", v: 44, p: 40, u: "dia", g: ["#b84c24", "#7a2e12"], e: "\ud83d\udeb2", s: "bicicleta" }
 ];
-var cur="hosp";
-var $=function(i){return document.getElementById(i)};
-var money=function(n){return "R$ "+n.toLocaleString("pt-BR")};
-function fmt(d){return d?d.split("-").reverse().join("/"):""}
-function msg(it){
-  var t=TABS.filter(function(x){return x.k===cur})[0],a=$("d-in").value,b=$("d-out").value,w;
-  if(!a){w="datas a combinar"}else if(t.range&&b){w="de "+fmt(a)+" a "+fmt(b)}else{w="data: "+fmt(a)}
-  return "Olá! Quero reservar: "+it+". "+w+". "+$("pax").value+".";
+
+var cur = "hosp";
+var $ = function (id) { return document.getElementById(id); };
+var money = function (n) { return "R$ " + n.toLocaleString("pt-BR"); };
+function fmt(d) { return d ? d.split("-").reverse().join("/") : ""; }
+
+function msg(it) {
+  var t = TABS.filter(function (x) { return x.k === cur; })[0];
+  var a = $("d-in").value, b = $("d-out").value, w;
+  if (!a) { w = "datas a combinar"; }
+  else if (t.range && b) { w = "de " + fmt(a) + " a " + fmt(b); }
+  else { w = "data: " + fmt(a); }
+  return "Ol\u00e1! Quero reservar: " + it + ". " + w + ". " + $("pax").value + ".";
 }
-function link(it){return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg(it))}
-function render(){
-  var t=TABS.filter(function(x){return x.k===cur})[0];
-  $("tabs").innerHTML=TABS.map(function(x){return '<button class="tab" role="tab" aria-selected="'+(x.k===cur)+'" data-k="'+x.k+'">'+x.n+'</button>'}).join("");
-  $("f-out").hidden=!t.range;
-  $("l-in").textContent=t.range?"Check-in":"Data";
-  $("t-dest").textContent="Mais reservados: "+t.n.toLowerCase();
-  $("s-dest").textContent=t.d+" em Icaraizinho de Amontada";
-  $("grid").innerHTML=ITEMS.filter(function(i){return i.t===cur}).map(function(i,x){
-    return '<article class="card"><div class="ph" style="background:linear-gradient(135deg,'+i.g[0]+','+i.g[1]+')"><span class="tag">'+i.tag+'</span><span>'+i.e+'</span></div>'+
-    '<div class="cb"><h3>'+i.n+'</h3><div class="rt"><b>'+i.r+'</b>'+i.v+' avaliações</div>'+
-    '<div class="pr"><small>a partir de</small><strong>'+money(i.p)+'</strong><small>/ '+i.u+'</small></div>'+
-    '<a class="btn" target="_blank" rel="noopener" data-it="'+i.n+'" href="'+link(i.n)+'">Reservar pelo WhatsApp</a></div></article>';
+function link(it) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg(it)); }
+function img(seed) { return "https://picsum.photos/seed/" + seed + "/800/600"; }
+
+function render() {
+  var t = TABS.filter(function (x) { return x.k === cur; })[0];
+
+  $("tabs").innerHTML = TABS.map(function (x) {
+    return '<button class="tab" role="tab" aria-selected="' + (x.k === cur) + '" data-k="' + x.k + '">' + x.n + "</button>";
   }).join("");
+
+  $("t-dest").textContent = "Mais reservados: " + t.n.toLowerCase();
+  $("s-dest").textContent = t.d + " em Icaraizinho de Amontada. Se est\u00e1 aqui, \u00e9 porque vale a viagem.";
+
+  $("grid").innerHTML = ITEMS.filter(function (i) { return i.t === cur; }).map(function (i) {
+    var amen = (AMENITIES[i.t] || []).map(function (a) { return "<span>" + a + "</span>"; }).join("");
+    return '<article class="card">' +
+      '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
+        '<img loading="lazy" src="' + img(i.s) + '" alt="' + i.n + '">' +
+        '<span class="card-badge">' + i.tag + "</span>" +
+        '<span class="card-rating">\u2605 ' + i.r + "</span>" +
+      "</div>" +
+      '<div class="card-body">' +
+        '<div class="card-loc">' + LOCATION + "</div>" +
+        "<h3>" + i.n + "</h3>" +
+        '<div class="amenities">' + amen + "</div>" +
+        '<div class="card-foot">' +
+          '<div class="price"><small>a partir de</small><strong>' + money(i.p) + "</strong><small>/ " + i.u + "</small></div>" +
+          '<a class="card-link" target="_blank" rel="noopener" data-it="' + i.n + '" href="' + link(i.n) + '">Ver detalhes \u2192</a>' +
+        "</div>" +
+      "</div>" +
+    "</article>";
+  }).join("");
+
   links();
 }
-function links(){
-  var a=document.querySelectorAll("a[data-it]");
-  for(var i=0;i<a.length;i++){a[i].href=link(a[i].getAttribute("data-it"))}
-  $("pk").href=link("Pacote casa + transfer + passeio");
+
+function links() {
+  var a = document.querySelectorAll("a[data-it]");
+  for (var i = 0; i < a.length; i++) { a[i].href = link(a[i].getAttribute("data-it")); }
+  $("pk").href = link("Pacote casa + transfer + passeio");
 }
-$("tabs").addEventListener("click",function(e){var k=e.target.getAttribute("data-k");if(k){cur=k;render()}});
-$("cats").innerHTML=TABS.map(function(x){return '<button class="cat" data-k="'+x.k+'"><span>'+x.e+'</span><b>'+x.n+'</b><i>'+x.d+'</i></button>'}).join("");
-$("cats").addEventListener("click",function(e){var b=e.target.closest(".cat");if(b){cur=b.getAttribute("data-k");render();$("destaques").scrollIntoView()}});
-["d-in","d-out","pax"].forEach(function(id){$(id).addEventListener("change",function(){
-  if(id==="d-in"){$("d-out").min=$("d-in").value}
-  links()})});
-var t0=new Date().toISOString().slice(0,10);$("d-in").min=t0;$("d-out").min=t0;
+
+$("tabs").addEventListener("click", function (e) {
+  var k = e.target.getAttribute("data-k");
+  if (k) { cur = k; render(); }
+});
+
+$("cats").innerHTML = TABS.map(function (x) {
+  return '<button class="style-card" data-k="' + x.k + '" style="--g1:' + x.g[0] + ';--g2:' + x.g[1] + '">' +
+    '<img loading="lazy" src="' + img("style-" + x.k) + '" alt="' + x.n + '">' +
+    '<span class="style-copy"><em>' + x.e + "</em><b>" + x.n + "</b><span>" + x.d + "</span></span>" +
+  "</button>";
+}).join("");
+
+$("cats").addEventListener("click", function (e) {
+  var b = e.target.closest(".style-card");
+  if (b) { cur = b.getAttribute("data-k"); render(); $("hospedagens").scrollIntoView(); }
+});
+
+["d-in", "d-out", "pax"].forEach(function (id) {
+  $(id).addEventListener("change", function () {
+    if (id === "d-in") { $("d-out").min = $("d-in").value; }
+    links();
+  });
+});
+
+$("reservar").addEventListener("submit", function (e) {
+  e.preventDefault();
+  render();
+  $("hospedagens").scrollIntoView();
+});
+
+var t0 = new Date().toISOString().slice(0, 10);
+$("d-in").min = t0;
+$("d-out").min = t0;
 render();

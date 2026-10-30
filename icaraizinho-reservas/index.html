@@ -1,90 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Icaraízinho Reservas — Hospedagem, Casas, Passeios e Mais</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Pousadas, casas, passeios e transfer com curadoria em Icaraizinho de Amontada, Ceará. Reserve direto, sem catálogo infinito.">
+  <title>Icaraizinho Reservas — Pousadas e experiências selecionadas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="hero">
-  <svg viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
-    <circle cx="600" cy="120" r="110" fill="#FFE2B8" opacity=".9"/>
-    <path d="M0 250 C200 200 330 250 520 230 S900 170 1200 240 V400 H0Z" fill="#E8590C" opacity=".55"/>
-    <path d="M0 300 C220 250 400 310 620 285 S980 240 1200 290 V400 H0Z" fill="#C2410C" opacity=".75"/>
-    <path d="M0 350 C260 320 460 365 700 345 S1000 320 1200 350 V400 H0Z" fill="#7C2D12"/>
-  </svg>
-  <div class="wrap">
-    <div class="top">
-      <div class="logo">Icaraízinho Reservas<small>Icaraizinho de Amontada · Ceará</small></div>
-      <nav>
-        <a class="l" href="#reservar">Hospedagem</a>
-        <a class="l" href="#reservar">Passeios</a>
-        <a class="l" href="#pacotes">Pacotes</a>
-        <a class="btn ghost" href="#destaques">Reservar</a>
-      </nav>
-    </div>
-    <div class="hero-t">
-      <div class="eyebrow">Vento, dunas e mar</div>
-      <h1>Seu refúgio em Icaraizinho de Amontada</h1>
-      <p>Pousadas, casas por temporada, passeios, buggy, transfer e aluguéis — tudo em um só lugar, com atendimento direto pelo WhatsApp.</p>
-    </div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">Icaraizinho</span>
+      <span class="brand-sub">RESERVAS</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#hospedagens">Hospedagem</a>
+      <a href="#experiencias">Experiências</a>
+      <a href="#pacotes">Pacotes</a>
+      <a href="#anuncie">Divulgue</a>
+    </nav>
+    <a class="btn btn-outline" href="#reservar">Reservar</a>
   </div>
 </header>
 
-<main>
-<div class="search" id="reservar">
-  <div class="tabs" role="tablist" id="tabs"></div>
-  <div class="fields">
-    <div class="f"><label id="l-in" for="d-in">Check-in</label><input type="date" id="d-in"></div>
-    <div class="f" id="f-out"><label for="d-out">Check-out</label><input type="date" id="d-out"></div>
-    <div class="f"><label for="pax">Pessoas</label>
-      <select id="pax"><option>1 pessoa</option><option selected>2 pessoas</option><option>3 pessoas</option><option>4 pessoas</option><option>5 pessoas</option><option>6 pessoas</option><option>7 a 10 pessoas</option></select></div>
-    <a class="btn" href="#destaques" id="go">Ver disponibilidade</a>
-  </div>
-</div>
+<main id="top">
 
-<div class="wrap">
-  <section>
-    <div class="sh"><div><h2>O que você procura?</h2><p>Escolha uma categoria e veja as opções.</p></div></div>
-    <div class="cats" id="cats"></div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Icaraizinho de Amontada · Ceará</p>
+      <h1>Pousadas e experiências selecionadas para você viajar bem</h1>
+      <p class="hero-sub">Cada lugar passa por curadoria. Nada entra por acaso. Se está aqui, é porque vale a viagem.</p>
+
+      <form class="search" id="reservar" autocomplete="off">
+        <div class="field">
+          <label for="dest">Onde</label>
+          <select id="dest">
+            <option selected>Icaraizinho de Amontada · CE</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="d-in">Quando</label>
+          <div class="dates">
+            <input type="date" id="d-in" aria-label="Check-in">
+            <input type="date" id="d-out" aria-label="Check-out">
+          </div>
+        </div>
+        <div class="field">
+          <label for="pax">Quem</label>
+          <select id="pax">
+            <option>1 hóspede</option>
+            <option selected>2 hóspedes</option>
+            <option>3 hóspedes</option>
+            <option>4 hóspedes</option>
+            <option>5 hóspedes</option>
+            <option>6 hóspedes</option>
+            <option>7 a 10 hóspedes</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </form>
+    </div>
   </section>
 
-  <section id="destaques">
-    <div class="sh"><div><h2 id="t-dest">Mais reservados</h2><p id="s-dest"></p></div></div>
-    <div class="grid" id="grid"></div>
-    <p class="note">Valores são ilustrativos. O botão abre o WhatsApp com sua solicitação já preenchida.</p>
-  </section>
-
-  <section id="pacotes">
-    <div class="band">
-      <div>
-        <h2>Pacotes com preço fechado</h2>
-        <p>Casa ou pousada + transfer do aeroporto de Fortaleza + passeio de buggy. Você escolhe as datas, a gente cuida do resto.</p>
+  <section class="section" id="hospedagens">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Nada de catálogo infinito. Só o que vale a viagem.</h2>
+          <p id="s-dest">Propriedades selecionadas para você reservar direto.</p>
+        </div>
       </div>
-      <a class="btn" id="pk" href="#" target="_blank" rel="noopener">Montar meu pacote</a>
+
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <h3 class="grid-title" id="t-dest">Mais reservados</h3>
+      <div class="cards" id="grid"></div>
+      <p class="note">Valores ilustrativos. O botão abre o WhatsApp com sua solicitação já preenchida.</p>
     </div>
   </section>
 
-  <section>
-    <div class="sh"><div><h2>Por que reservar direto?</h2></div></div>
-    <div class="vals">
-      <div class="val"><span>💬</span><h3>Atendimento pelo WhatsApp</h3><p>Fale com quem conhece Icaraizinho e confirme sua reserva em minutos.</p></div>
-      <div class="val"><span>💳</span><h3>Pix e sinal facilitado</h3><p>Garanta as datas com uma entrada e pague o restante na chegada.</p></div>
-      <div class="val"><span>🌅</span><h3>Preço por temporada</h3><p>Valores claros para alta e baixa temporada, sem taxas escondidas.</p></div>
+  <section class="section" id="experiencias">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Explore por estilo de viagem</h2>
+          <p>Cada hospedagem e passeio passa por curadoria. Escolha o que combina com você.</p>
+        </div>
+      </div>
+      <div class="styles-grid" id="cats"></div>
     </div>
   </section>
-</div>
+
+  <section class="section" id="pacotes">
+    <div class="wrap">
+      <div class="cta-band">
+        <div class="cta-copy">
+          <p class="eyebrow">Pacotes com preço fechado</p>
+          <h2>Casa ou pousada + transfer + passeio</h2>
+          <p>Você escolhe as datas, a gente cuida do resto. Transfer do aeroporto de Fortaleza e passeio de buggy inclusos.</p>
+        </div>
+        <a class="btn btn-accent" id="pk" href="#" target="_blank" rel="noopener">Montar meu pacote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="anuncie">
+    <div class="wrap">
+      <div class="advertise">
+        <div>
+          <h2>Anuncie sua propriedade</h2>
+          <p>Venda mais, acompanhe suas reservas e tenha uma gestão simples e transparente, feita para pousadas independentes.</p>
+        </div>
+        <a class="btn btn-outline" href="#reservar">Quero anunciar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <div>
+          <h2>Perguntas frequentes</h2>
+          <p>Tudo o que você precisa saber para reservar.</p>
+        </div>
+      </div>
+      <details>
+        <summary>Como funciona a reserva?</summary>
+        <p>Você busca pelas datas, escolhe a propriedade ou experiência e finaliza pelo WhatsApp com nossa equipe, que confirma a disponibilidade e o pagamento.</p>
+      </details>
+      <details>
+        <summary>As avaliações são confiáveis?</summary>
+        <p>Sim. As avaliações são vinculadas a reservas reais e cada propriedade passa por curadoria antes de entrar na plataforma.</p>
+      </details>
+      <details>
+        <summary>Quais formas de pagamento são aceitas?</summary>
+        <p>Pix e cartão. Você garante as datas com uma entrada e paga o restante na chegada.</p>
+      </details>
+      <details>
+        <summary>Posso cancelar minha reserva?</summary>
+        <p>Sim. As condições de cancelamento variam por propriedade e temporada e são informadas antes da confirmação.</p>
+      </details>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-  <div class="wrap">
-    <div><div class="logo">Icaraízinho Reservas<small>Icaraizinho de Amontada · Ceará</small></div><p>Hospedagem, casas por temporada, passeios, transfer e aluguéis.</p></div>
-    <div><p><b>Contato</b></p><p>WhatsApp: (88) 99999-9999</p><p>Instagram: @icaraizinhoreservas</p></div>
-    <div><p>© 2026 Icaraízinho Reservas</p></div>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <a class="brand brand-light" href="#top">
+        <span class="brand-mark">Icaraizinho</span>
+        <span class="brand-sub">RESERVAS</span>
+      </a>
+      <p>Pousadas, casas por temporada, passeios, transfer e aluguéis em Icaraizinho de Amontada · Ceará.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Atendimento</h4>
+      <a href="#reservar">WhatsApp: (88) 99999-9999</a>
+      <a href="#reservar">Instagram: @icaraizinhoreservas</a>
+      <a href="#reservar">Central de atendimento</a>
+    </div>
+    <div class="footer-col">
+      <h4>Plataforma</h4>
+      <a href="#anuncie">Anuncie sua propriedade</a>
+      <a href="#pacotes">Pacotes</a>
+      <a href="#experiencias">Experiências</a>
+    </div>
+  </div>
+  <div class="wrap footer-legal">
+    <p>© 2026 Icaraizinho Reservas · Todos os direitos reservados.</p>
+    <p>Reserve sempre pelos canais oficiais. Não realizamos abordagens por redes sociais.</p>
   </div>
 </footer>
 
