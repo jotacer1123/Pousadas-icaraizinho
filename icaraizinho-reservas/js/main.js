@@ -2,11 +2,11 @@ var WA = "5588999999999";
 var LOCATION = "Icaraizinho de Amontada \u00b7 CE";
 
 var TABS = [
-  { k: "hosp", n: "Hospedagem", e: "\ud83c\udfe8", d: "Pousadas e chal\u00e9s", range: true, g: ["#28666e", "#0f2f36"] },
-  { k: "casa", n: "Casas de temporada", e: "\ud83c\udfe1", d: "Casas inteiras", range: true, g: ["#b84c24", "#7a2e12"] },
-  { k: "passeio", n: "Passeios", e: "\ud83c\udfc4", d: "Buggy, kite e mais", range: false, g: ["#28666e", "#1e6f5c"] },
-  { k: "transfer", n: "Transfer", e: "\ud83d\ude90", d: "Aeroporto de Fortaleza", range: false, g: ["#4f5561", "#1f2937"] },
-  { k: "alug", n: "Alugu\u00e9is", e: "\ud83d\udef5", d: "Quadriciclo e bike", range: false, g: ["#b84c24", "#0f2f36"] }
+  { k: "hosp", n: "Hospedagem", e: "\ud83c\udfe8", d: "Pousadas e chal\u00e9s", range: true, g: ["#b07a5a", "#5f4232"] },
+  { k: "casa", n: "Casas de temporada", e: "\ud83c\udfe1", d: "Casas inteiras", range: true, g: ["#b0693f", "#6b4230"] },
+  { k: "passeio", n: "Passeios", e: "\ud83c\udfc4", d: "Buggy, kite e mais", range: false, g: ["#b07a5a", "#9a7355"] },
+  { k: "transfer", n: "Transfer", e: "\ud83d\ude90", d: "Aeroporto de Fortaleza", range: false, g: ["#a08a78", "#5b4a40"] },
+  { k: "alug", n: "Alugu\u00e9is", e: "\ud83d\udef5", d: "Quadriciclo e bike", range: false, g: ["#b0693f", "#5f4232"] }
 ];
 
 var AMENITIES = {
@@ -18,19 +18,19 @@ var AMENITIES = {
 };
 
 var ITEMS = [
-  { t: "hosp", tag: "Pousada", n: "Pousada Brisa do Kite", r: "9,2", v: 128, p: 290, u: "noite", g: ["#28666e", "#0f2f36"], e: "\ud83c\udfe8", s: "brisa-do-kite" },
-  { t: "hosp", tag: "Chal\u00e9", n: "Chal\u00e9 P\u00f4r do Sol", r: "9,4", v: 86, p: 340, u: "noite", g: ["#28666e", "#1e6f5c"], e: "\ud83d\uded6", s: "por-do-sol" },
-  { t: "hosp", tag: "Pousada", n: "Pousada Vento Leste", r: "8,9", v: 203, p: 260, u: "noite", g: ["#4f5561", "#0f2f36"], e: "\ud83c\udf34", s: "vento-leste" },
-  { t: "casa", tag: "Casa inteira", n: "Casa Duna Dourada \u00b7 6 pessoas", r: "9,5", v: 41, p: 780, u: "noite", g: ["#b84c24", "#7a2e12"], e: "\ud83c\udfe1", s: "duna-dourada" },
-  { t: "casa", tag: "Casa inteira", n: "Casa Coqueiral \u00b7 8 pessoas", r: "9,1", v: 57, p: 980, u: "noite", g: ["#b84c24", "#0f2f36"], e: "\ud83c\udf34", s: "coqueiral" },
-  { t: "casa", tag: "Casa inteira", n: "Casa Mar\u00e9 Alta \u00b7 4 pessoas", r: "9,3", v: 34, p: 520, u: "noite", g: ["#28666e", "#0f2f36"], e: "\ud83c\udf0a", s: "mare-alta" },
-  { t: "passeio", tag: "Passeio", n: "Buggy pelas dunas e lagoas", r: "9,7", v: 312, p: 120, u: "pessoa", g: ["#28666e", "#1e6f5c"], e: "\ud83d\ude99", s: "buggy-dunas" },
-  { t: "passeio", tag: "Aula", n: "Aula de kitesurf \u00b7 2 h", r: "9,6", v: 148, p: 350, u: "pessoa", g: ["#28666e", "#0f2f36"], e: "\ud83e\ude81", s: "kitesurf" },
-  { t: "passeio", tag: "Passeio", n: "P\u00f4r do sol na duna", r: "9,8", v: 205, p: 60, u: "pessoa", g: ["#b84c24", "#7a2e12"], e: "\ud83c\udf05", s: "por-do-sol-duna" },
-  { t: "transfer", tag: "Transfer", n: "Aeroporto de Fortaleza \u2192 Icaraizinho", r: "9,4", v: 97, p: 90, u: "pessoa", g: ["#4f5561", "#1f2937"], e: "\ud83d\ude90", s: "transfer-fortaleza" },
-  { t: "transfer", tag: "Privativo", n: "Transfer privativo \u00b7 at\u00e9 4 pessoas", r: "9,6", v: 63, p: 520, u: "trajeto", g: ["#4f5561", "#0f2f36"], e: "\ud83d\ude97", s: "transfer-privativo" },
-  { t: "alug", tag: "Aluguel", n: "Quadriciclo \u00b7 1 hora", r: "9,2", v: 88, p: 180, u: "hora", g: ["#b84c24", "#0f2f36"], e: "\ud83d\udef5", s: "quadriciclo" },
-  { t: "alug", tag: "Aluguel", n: "Bicicleta \u00b7 di\u00e1ria", r: "9,0", v: 44, p: 40, u: "dia", g: ["#b84c24", "#7a2e12"], e: "\ud83d\udeb2", s: "bicicleta" }
+  { t: "hosp", tag: "Pousada", n: "Pousada Brisa do Kite", r: "9,2", v: 128, p: 290, u: "noite", g: ["#b07a5a", "#5f4232"], e: "\ud83c\udfe8", s: "brisa-do-kite" },
+  { t: "hosp", tag: "Chal\u00e9", n: "Chal\u00e9 P\u00f4r do Sol", r: "9,4", v: 86, p: 340, u: "noite", g: ["#b07a5a", "#9a7355"], e: "\ud83d\uded6", s: "por-do-sol" },
+  { t: "hosp", tag: "Pousada", n: "Pousada Vento Leste", r: "8,9", v: 203, p: 260, u: "noite", g: ["#a08a78", "#5f4232"], e: "\ud83c\udf34", s: "vento-leste" },
+  { t: "casa", tag: "Casa inteira", n: "Casa Duna Dourada \u00b7 6 pessoas", r: "9,5", v: 41, p: 780, u: "noite", g: ["#b0693f", "#6b4230"], e: "\ud83c\udfe1", s: "duna-dourada" },
+  { t: "casa", tag: "Casa inteira", n: "Casa Coqueiral \u00b7 8 pessoas", r: "9,1", v: 57, p: 980, u: "noite", g: ["#b0693f", "#5f4232"], e: "\ud83c\udf34", s: "coqueiral" },
+  { t: "casa", tag: "Casa inteira", n: "Casa Mar\u00e9 Alta \u00b7 4 pessoas", r: "9,3", v: 34, p: 520, u: "noite", g: ["#b07a5a", "#5f4232"], e: "\ud83c\udf0a", s: "mare-alta" },
+  { t: "passeio", tag: "Passeio", n: "Buggy pelas dunas e lagoas", r: "9,7", v: 312, p: 120, u: "pessoa", g: ["#b07a5a", "#9a7355"], e: "\ud83d\ude99", s: "buggy-dunas" },
+  { t: "passeio", tag: "Aula", n: "Aula de kitesurf \u00b7 2 h", r: "9,6", v: 148, p: 350, u: "pessoa", g: ["#b07a5a", "#5f4232"], e: "\ud83e\ude81", s: "kitesurf" },
+  { t: "passeio", tag: "Passeio", n: "P\u00f4r do sol na duna", r: "9,8", v: 205, p: 60, u: "pessoa", g: ["#b0693f", "#6b4230"], e: "\ud83c\udf05", s: "por-do-sol-duna" },
+  { t: "transfer", tag: "Transfer", n: "Aeroporto de Fortaleza \u2192 Icaraizinho", r: "9,4", v: 97, p: 90, u: "pessoa", g: ["#a08a78", "#5b4a40"], e: "\ud83d\ude90", s: "transfer-fortaleza" },
+  { t: "transfer", tag: "Privativo", n: "Transfer privativo \u00b7 at\u00e9 4 pessoas", r: "9,6", v: 63, p: 520, u: "trajeto", g: ["#a08a78", "#5f4232"], e: "\ud83d\ude97", s: "transfer-privativo" },
+  { t: "alug", tag: "Aluguel", n: "Quadriciclo \u00b7 1 hora", r: "9,2", v: 88, p: 180, u: "hora", g: ["#b0693f", "#5f4232"], e: "\ud83d\udef5", s: "quadriciclo" },
+  { t: "alug", tag: "Aluguel", n: "Bicicleta \u00b7 di\u00e1ria", r: "9,0", v: 44, p: 40, u: "dia", g: ["#b0693f", "#6b4230"], e: "\ud83d\udeb2", s: "bicicleta" }
 ];
 
 var cur = "hosp";

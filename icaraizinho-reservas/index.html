@@ -38,20 +38,30 @@
 
       <form class="search" id="reservar" autocomplete="off">
         <div class="field">
-          <label for="dest">Onde</label>
+          <label for="dest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Onde
+          </label>
           <select id="dest">
             <option selected>Icaraizinho de Amontada · CE</option>
           </select>
         </div>
         <div class="field">
-          <label for="d-in">Quando</label>
+          <label for="d-in">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
+            Quando
+          </label>
           <div class="dates">
             <input type="date" id="d-in" aria-label="Check-in">
+            <span class="date-sep" aria-hidden="true">→</span>
             <input type="date" id="d-out" aria-label="Check-out">
           </div>
         </div>
         <div class="field">
-          <label for="pax">Quem</label>
+          <label for="pax">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+            Quem
+          </label>
           <select id="pax">
             <option>1 hóspede</option>
             <option selected>2 hóspedes</option>
