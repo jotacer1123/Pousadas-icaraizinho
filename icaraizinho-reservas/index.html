@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Pousadas, casas, passeios e transfer com curadoria em Icaraizinho de Amontada, Ceará. Reserve direto, sem catálogo infinito.">
+  <meta name="theme-color" content="#FDF8F2">
   <title>Icaraizinho Reservas — Pousadas e experiências selecionadas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,13 +19,18 @@
       <span class="brand-mark">Icaraizinho</span>
       <span class="brand-sub">RESERVAS</span>
     </a>
-    <nav class="main-nav" aria-label="Navegação principal">
+    <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
       <a href="#hospedagens">Hospedagem</a>
       <a href="#experiencias">Experiências</a>
       <a href="#pacotes">Pacotes</a>
       <a href="#anuncie">Divulgue</a>
     </nav>
-    <a class="btn btn-outline" href="#reservar">Reservar</a>
+    <div class="header-actions">
+      <a class="btn btn-outline header-cta" href="#reservar">Reservar</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -36,25 +42,25 @@
       <h1>Pousadas e experiências selecionadas para você viajar bem</h1>
       <p class="hero-sub">Cada lugar passa por curadoria. Nada entra por acaso. Se está aqui, é porque vale a viagem.</p>
 
-      <form class="search" id="reservar" autocomplete="off">
+      <form class="search" id="reservar" autocomplete="off" novalidate>
         <div class="field">
           <label for="dest">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
             Onde
           </label>
-          <select id="dest">
+          <select id="dest" name="destino">
             <option selected>Icaraizinho de Amontada · CE</option>
           </select>
         </div>
-        <div class="field">
-          <label for="d-in">
+        <div class="field field-dates">
+          <span class="field-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
             Quando
-          </label>
+          </span>
           <div class="dates">
-            <input type="date" id="d-in" aria-label="Check-in">
+            <input type="date" id="d-in" name="checkin" aria-label="Check-in" placeholder="Check-in">
             <span class="date-sep" aria-hidden="true">→</span>
-            <input type="date" id="d-out" aria-label="Check-out">
+            <input type="date" id="d-out" name="checkout" aria-label="Check-out" placeholder="Check-out">
           </div>
         </div>
         <div class="field">
@@ -62,18 +68,19 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
             Quem
           </label>
-          <select id="pax">
-            <option>1 hóspede</option>
-            <option selected>2 hóspedes</option>
-            <option>3 hóspedes</option>
-            <option>4 hóspedes</option>
-            <option>5 hóspedes</option>
-            <option>6 hóspedes</option>
-            <option>7 a 10 hóspedes</option>
+          <select id="pax" name="hospedes">
+            <option value="1">1 hóspede</option>
+            <option value="2" selected>2 hóspedes</option>
+            <option value="3">3 hóspedes</option>
+            <option value="4">4 hóspedes</option>
+            <option value="5">5 hóspedes</option>
+            <option value="6">6 hóspedes</option>
+            <option value="10">7 a 10 hóspedes</option>
           </select>
         </div>
         <button class="btn btn-primary" type="submit">Buscar</button>
       </form>
+      <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
     </div>
   </section>
 
@@ -86,10 +93,11 @@
         </div>
       </div>
 
-      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="tabs" role="group" aria-label="Filtrar por categoria" id="tabs"></div>
       <h3 class="grid-title" id="t-dest">Mais reservados</h3>
       <div class="cards" id="grid"></div>
-      <p class="note">Valores ilustrativos. O botão abre o WhatsApp com sua solicitação já preenchida.</p>
+      <noscript><p class="note">Ative o JavaScript para ver as propriedades e experiências.</p></noscript>
+      <p class="note">Valores ilustrativos. As fotos são imagens de referência, não dos estabelecimentos. O botão abre o WhatsApp com sua solicitação já preenchida.</p>
     </div>
   </section>
 
@@ -98,7 +106,7 @@
       <div class="section-head">
         <div>
           <h2>Explore por estilo de viagem</h2>
-          <p>Cada hospedagem e passeio passa por curadoria. Escolha o que combina com você.</p>
+          <p>Encontre a experiência certa para o seu momento — e veja as opções selecionadas.</p>
         </div>
       </div>
       <div class="styles-grid" id="cats"></div>
@@ -125,12 +133,12 @@
           <h2>Anuncie sua propriedade</h2>
           <p>Venda mais, acompanhe suas reservas e tenha uma gestão simples e transparente, feita para pousadas independentes.</p>
         </div>
-        <a class="btn btn-outline" href="#reservar">Quero anunciar</a>
+        <a class="btn btn-outline" id="anuncie-cta" href="#" target="_blank" rel="noopener">Quero anunciar</a>
       </div>
     </div>
   </section>
 
-  <section class="section faq">
+  <section class="section faq" id="faq">
     <div class="wrap narrow">
       <div class="section-head">
         <div>
@@ -170,9 +178,9 @@
     </div>
     <div class="footer-col">
       <h4>Atendimento</h4>
-      <a href="#reservar">WhatsApp: (88) 99999-9999</a>
-      <a href="#reservar">Instagram: @icaraizinhoreservas</a>
-      <a href="#reservar">Central de atendimento</a>
+      <a href="#" id="footer-wa" target="_blank" rel="noopener">WhatsApp</a>
+      <span class="footer-text">Instagram: @icaraizinhoreservas</span>
+      <a href="#faq">Central de atendimento</a>
     </div>
     <div class="footer-col">
       <h4>Plataforma</h4>
