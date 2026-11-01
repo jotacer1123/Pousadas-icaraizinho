@@ -4,32 +4,52 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Pousadas, casas, passeios e transfer com curadoria em Icaraizinho de Amontada, Ceará. Reserve direto, sem catálogo infinito.">
-  <meta name="theme-color" content="#FFFDF0">
+  <meta name="theme-color" content="#ffffff">
   <title>Icaraizinho Reservas — Pousadas e experiências selecionadas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">
+  <div class="wrap header-top">
+    <a class="brand" href="#top" aria-label="Icaraizinho Reservas — início">
       <span class="brand-mark">Icaraizinho</span>
-      <span class="brand-sub">RESERVAS</span>
+      <span class="brand-sub">Reservas</span>
     </a>
-    <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-      <a href="#hospedagens">Hospedagem</a>
-      <a href="#experiencias">Experiências</a>
-      <a href="#pacotes">Pacotes</a>
-      <a href="#anuncie">Divulgue</a>
-    </nav>
-    <div class="header-actions">
-      <a class="btn btn-outline header-cta" href="#reservar">Reservar</a>
+
+    <div class="header-top-actions">
+      <a class="header-link" href="#anuncie">Divulgue sua propriedade</a>
+      <a class="header-link" href="#faq">Atendimento</a>
+      <span class="header-link header-select" aria-hidden="true">Português (BR)</span>
+      <span class="header-link header-select" aria-hidden="true">BRL</span>
+      <a class="btn btn-ghost" href="#anuncie">Anuncie</a>
+      <a class="btn btn-light" href="#reservar">Reservar</a>
       <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
         <span></span><span></span><span></span>
       </button>
+    </div>
+  </div>
+
+  <div class="header-nav">
+    <div class="wrap">
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <a href="#hospedagens" class="is-active">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M6 10V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M6 14h4"/></svg>
+          Hospedagens
+        </a>
+        <a href="#experiencias">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
+          Experiências
+        </a>
+        <a href="#pacotes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4z"/><path d="M2 7h20v4H2z"/><path d="M12 7v13"/></svg>
+          Pacotes
+        </a>
+        <a href="#anuncie">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v15"/><path d="M4 21h16"/><path d="M8 8h5M8 12h5M8 16h3"/></svg>
+          Divulgue
+        </a>
+      </nav>
     </div>
   </div>
 </header>
@@ -37,16 +57,24 @@
 <main id="top">
 
   <section class="hero">
-    <div class="wrap hero-inner">
+    <div class="hero__slides" aria-hidden="true">
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+
+    <div class="wrap">
       <p class="eyebrow">Icaraizinho de Amontada · Ceará</p>
-      <h1>Pousadas e experiências selecionadas para você viajar bem</h1>
-      <p class="hero-sub">Cada lugar passa por curadoria. Nada entra por acaso. Se está aqui, é porque vale a viagem.</p>
+      <h1>Encontre o lugar perfeito para a sua viagem</h1>
+      <p class="hero-sub">Pousadas, casas e experiências com curadoria local. Reserve direto, sem catálogo infinito.</p>
 
       <form class="search" id="reservar" autocomplete="off" novalidate>
-        <div class="field">
+        <div class="field field-dest">
           <label for="dest">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-            Onde
+            Onde você quer ir?
           </label>
           <select id="dest" name="destino">
             <option selected>Icaraizinho de Amontada · CE</option>
@@ -55,18 +83,18 @@
         <div class="field field-dates">
           <span class="field-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
-            Quando
+            Check-in · Check-out
           </span>
           <div class="dates">
-            <input type="date" id="d-in" name="checkin" aria-label="Check-in" placeholder="Check-in">
+            <input type="date" id="d-in" name="checkin" aria-label="Check-in">
             <span class="date-sep" aria-hidden="true">→</span>
-            <input type="date" id="d-out" name="checkout" aria-label="Check-out" placeholder="Check-out">
+            <input type="date" id="d-out" name="checkout" aria-label="Check-out">
           </div>
         </div>
-        <div class="field">
+        <div class="field field-guests">
           <label for="pax">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
-            Quem
+            Hóspedes
           </label>
           <select id="pax" name="hospedes">
             <option value="1">1 hóspede</option>
@@ -78,9 +106,18 @@
             <option value="10">7 a 10 hóspedes</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Buscar</button>
+        <button class="btn btn-search" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+          Pesquisar
+        </button>
       </form>
       <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
+
+      <div class="search-trust">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Reserva direta com a equipe local</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Curadoria de pousadas e experiências</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Pague por Pix ou cartão</span>
+      </div>
     </div>
   </section>
 
@@ -88,9 +125,10 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2>Nada de catálogo infinito. Só o que vale a viagem.</h2>
+          <h2>Ofertas em Icaraizinho</h2>
           <p id="s-dest">Propriedades selecionadas para você reservar direto.</p>
         </div>
+        <a class="section-link" href="#experiencias">Ver todas as opções →</a>
       </div>
 
       <div class="tabs" role="group" aria-label="Filtrar por categoria" id="tabs"></div>
@@ -101,11 +139,11 @@
     </div>
   </section>
 
-  <section class="section" id="experiencias">
+  <section class="section section-soft" id="experiencias">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2>Explore por estilo de viagem</h2>
+          <h2>Navegue por estilo de viagem</h2>
           <p>Encontre a experiência certa para o seu momento — e veja as opções selecionadas.</p>
         </div>
       </div>
@@ -130,10 +168,11 @@
     <div class="wrap">
       <div class="advertise">
         <div>
+          <p class="eyebrow">Para anfitriões</p>
           <h2>Anuncie sua propriedade</h2>
           <p>Venda mais, acompanhe suas reservas e tenha uma gestão simples e transparente, feita para pousadas independentes.</p>
         </div>
-        <a class="btn btn-outline" id="anuncie-cta" href="#" target="_blank" rel="noopener">Quero anunciar</a>
+        <a class="btn btn-primary" id="anuncie-cta" href="#" target="_blank" rel="noopener">Quero anunciar</a>
       </div>
     </div>
   </section>
@@ -172,26 +211,39 @@
     <div class="footer-brand">
       <a class="brand brand-light" href="#top">
         <span class="brand-mark">Icaraizinho</span>
-        <span class="brand-sub">RESERVAS</span>
+        <span class="brand-sub">Reservas</span>
       </a>
       <p>Pousadas, casas por temporada, passeios, transfer e aluguéis em Icaraizinho de Amontada · Ceará.</p>
+      <p class="footer-trust">Curadoria local · Reserva direta · Atendimento humano</p>
     </div>
     <div class="footer-col">
       <h4>Atendimento</h4>
       <a href="#" id="footer-wa" target="_blank" rel="noopener">WhatsApp</a>
-      <span class="footer-text">Instagram: @icaraizinhoreservas</span>
       <a href="#faq">Central de atendimento</a>
+      <span class="footer-text">Instagram: @icaraizinhoreservas</span>
     </div>
     <div class="footer-col">
-      <h4>Plataforma</h4>
-      <a href="#anuncie">Anuncie sua propriedade</a>
-      <a href="#pacotes">Pacotes</a>
+      <h4>Descubra</h4>
+      <a href="#hospedagens">Hospedagem</a>
       <a href="#experiencias">Experiências</a>
+      <a href="#pacotes">Pacotes</a>
+    </div>
+    <div class="footer-col">
+      <h4>Parceiros</h4>
+      <a href="#anuncie">Anuncie sua propriedade</a>
+      <a href="#anuncie">Seja parceiro</a>
+      <a href="#faq">Fale com a equipe</a>
     </div>
   </div>
-  <div class="wrap footer-legal">
-    <p>© 2026 Icaraizinho Reservas · Todos os direitos reservados.</p>
-    <p>Reserve sempre pelos canais oficiais. Não realizamos abordagens por redes sociais.</p>
+  <div class="footer-bottom">
+    <div class="wrap footer-bottom-inner">
+      <a class="brand brand-light" href="#top">
+        <span class="brand-mark">Icaraizinho</span>
+        <span class="brand-sub">Reservas</span>
+      </a>
+      <p>© 2026 Icaraizinho Reservas · Todos os direitos reservados.</p>
+      <p>Reserve sempre pelos canais oficiais.</p>
+    </div>
   </div>
 </footer>
 
