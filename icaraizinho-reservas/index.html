@@ -6,6 +6,7 @@
   <meta name="description" content="Pousadas, casas, passeios e transfer com curadoria em Icaraizinho de Amontada, Ceará. Reserve direto, sem catálogo infinito.">
   <meta name="theme-color" content="#ffffff">
   <title>Icaraizinho Reservas — Pousadas e experiências selecionadas</title>
+  <link rel="preload" as="image" href="img/pousada-1-hero.webp" type="image/webp">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,43 +14,21 @@
 <header class="site-header">
   <div class="wrap header-top">
     <a class="brand" href="#top" aria-label="Icaraizinho Reservas — início">
-      <span class="brand-mark">Icaraizinho</span>
-      <span class="brand-sub">Reservas</span>
+      <img class="brand-logo" src="img/image-removebg-preview.png" alt="Icaraizinho Reservas" width="866" height="288">
     </a>
 
+    <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+      <a href="#hospedagens" class="is-active">Hospedagens</a>
+      <a href="#experiencias">Experiências</a>
+      <a href="#pacotes">Pacotes</a>
+      <a href="#anuncie">Anuncie</a>
+    </nav>
+
     <div class="header-top-actions">
-      <a class="header-link" href="#anuncie">Divulgue sua propriedade</a>
-      <a class="header-link" href="#faq">Atendimento</a>
-      <span class="header-link header-select" aria-hidden="true">Português (BR)</span>
-      <span class="header-link header-select" aria-hidden="true">BRL</span>
-      <a class="btn btn-ghost" href="#anuncie">Anuncie</a>
       <a class="btn btn-light" href="#reservar">Reservar</a>
       <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
         <span></span><span></span><span></span>
       </button>
-    </div>
-  </div>
-
-  <div class="header-nav">
-    <div class="wrap">
-      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-        <a href="#hospedagens" class="is-active">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M6 10V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M6 14h4"/></svg>
-          Hospedagens
-        </a>
-        <a href="#experiencias">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
-          Experiências
-        </a>
-        <a href="#pacotes">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4z"/><path d="M2 7h20v4H2z"/><path d="M12 7v13"/></svg>
-          Pacotes
-        </a>
-        <a href="#anuncie">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v15"/><path d="M4 21h16"/><path d="M8 8h5M8 12h5M8 16h3"/></svg>
-          Divulgue
-        </a>
-      </nav>
     </div>
   </div>
 </header>
@@ -74,7 +53,7 @@
         <div class="field field-dest">
           <label for="dest">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-            Onde você quer ir?
+            Destino
           </label>
           <select id="dest" name="destino">
             <option selected>Icaraizinho de Amontada · CE</option>
@@ -83,12 +62,18 @@
         <div class="field field-dates">
           <span class="field-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
-            Check-in · Check-out
+            Datas
           </span>
           <div class="dates">
-            <input type="date" id="d-in" name="checkin" aria-label="Check-in">
+            <div class="date-input">
+              <input type="date" id="d-in" name="checkin" aria-label="Check-in">
+              <svg class="date-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
+            </div>
             <span class="date-sep" aria-hidden="true">→</span>
-            <input type="date" id="d-out" name="checkout" aria-label="Check-out">
+            <div class="date-input">
+              <input type="date" id="d-out" name="checkout" aria-label="Check-out">
+              <svg class="date-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
+            </div>
           </div>
         </div>
         <div class="field field-guests">
