@@ -82,12 +82,6 @@ var PHOTOS = [
   "img/pousada-3.jpeg",
   "img/pousada-4.jpeg"
 ];
-var HERO_PHOTOS = [
-  "img/pousada-1-hero.webp",
-  "img/pousada-2-hero.webp",
-  "img/pousada-3-hero.webp",
-  "img/pousada-4-hero.webp"
-];
 function img(n) { return PHOTOS[((n % PHOTOS.length) + PHOTOS.length) % PHOTOS.length]; }
 function catOf(k) { return TABS.filter(function (x) { return x.k === k; })[0] || TABS[0]; }
 function ratingLabel(r) {
@@ -304,10 +298,6 @@ render();
   var DURACAO = 1700;
   var atual = 0, timer = null, ocupado = false;
 
-  for (var i = 0; i < slides.length; i++) {
-    var src = new URL(HERO_PHOTOS[i % HERO_PHOTOS.length], document.baseURI).href;
-    slides[i].style.setProperty("--bg", 'url("' + src + '")');
-  }
   slides[0].classList.add("is-active");
 
   function proximo() {

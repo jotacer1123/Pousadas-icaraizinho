@@ -107,10 +107,11 @@ img{display:block;max-width:100%;height:auto}
   position:absolute;inset:0;overflow:hidden;opacity:0;
   will-change:opacity;
 }
-.hero-slide::before{
-  content:"";position:absolute;inset:0;
-  background-image:var(--bg);background-size:cover;background-position:center;
-  background-repeat:no-repeat;
+.hero-slide img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  pointer-events:none;
 }
 .hero-slide.is-active{opacity:1;z-index:1}
 .hero-slide.is-entering{opacity:0;z-index:2;animation:hero-fade-in 1.2s ease forwards}
@@ -398,5 +399,4 @@ img{display:block;max-width:100%;height:auto}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .hero-slide.is-entering{opacity:1;animation:none}
-  .hero-slide::before{animation:none!important}
 }
