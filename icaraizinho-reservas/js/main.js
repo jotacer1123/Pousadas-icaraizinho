@@ -277,6 +277,17 @@ document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); navToggle.focus(); }
 });
 
+document.addEventListener("click", function (e) {
+  if (!nav.classList.contains("is-open")) return;
+  if (nav.contains(e.target) || navToggle.contains(e.target)) return;
+  setMenu(false);
+});
+
+var desktop = window.matchMedia("(min-width:901px)");
+function onDesktopChange(e) { if (e.matches) setMenu(false); }
+if (desktop.addEventListener) { desktop.addEventListener("change", onDesktopChange); }
+else { desktop.addListener(onDesktopChange); }
+
 var t0 = todayISO();
 $("d-in").min = t0;
 $("d-out").min = addDays(t0, 1);
