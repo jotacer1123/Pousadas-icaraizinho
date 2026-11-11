@@ -77,10 +77,10 @@ function waLink(text) {
   return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text);
 }
 var PHOTOS = [
-  "img/pousada-1.jpeg",
-  "img/pousada-2.jpeg",
-  "img/pousada-3.jpeg",
-  "img/pousada-4.jpeg"
+  "img/pousadas_melhoradas_fotos_e_ia/pousada-1-1280.webp",
+  "img/pousadas_melhoradas_fotos_e_ia/pousada-2-1280.webp",
+  "img/pousadas_melhoradas_fotos_e_ia/pousada-3-1280.webp",
+  "img/pousadas_melhoradas_fotos_e_ia/pousada-4-1280.webp"
 ];
 function img(n) { return PHOTOS[((n % PHOTOS.length) + PHOTOS.length) % PHOTOS.length]; }
 function catOf(k) { return TABS.filter(function (x) { return x.k === k; })[0] || TABS[0]; }
@@ -139,7 +139,7 @@ function render() {
     var amen = (i.am || []).map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("");
     return '<article class="card">' +
       '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
-        '<img loading="lazy" decoding="async" width="800" height="600" src="' + img(ITEMS.indexOf(i)) + '" alt="">' +
+        '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(ITEMS.indexOf(i)) + '" alt="' + esc(i.n) + '">' +
         '<span class="card-badge">' + esc(i.tag) + "</span>" +
         '<button class="card-wish" type="button" aria-pressed="false" aria-label="Salvar ' + esc(i.n) + ' nos favoritos">' + ICONS.heart + "</button>" +
       "</div>" +
@@ -191,7 +191,7 @@ $("grid").addEventListener("click", function (e) {
 
 $("cats").innerHTML = STYLES.map(function (x) {
   return '<button class="style-card" type="button" data-k="' + x.k + '" aria-label="Ver op\u00e7\u00f5es para ' + esc(x.n) + '" style="--g1:' + x.g[0] + ';--g2:' + x.g[1] + '">' +
-    '<span class="style-media"><img loading="lazy" decoding="async" width="800" height="600" src="' + img(STYLES.indexOf(x)) + '" alt=""></span>' +
+    '<span class="style-media"><img loading="lazy" decoding="async" width="1280" height="720" src="' + img(STYLES.indexOf(x)) + '" alt="' + esc(x.n) + '"></span>' +
     '<span class="style-copy">' +
       "<b>" + esc(x.n) + "</b>" +
       '<span class="style-desc">' + esc(x.d) + "</span>" +
@@ -287,27 +287,60 @@ $("d-in").min = t0;
 $("d-out").min = addDays(t0, 1);
 render();
 
-/* Carrossel de fundo do hero com crossfade suave */
+/* Sombra suave no header ao rolar */
+(function () {
+  var header = document.getElementById("site-header");
+  if (!header) return;
+  function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 8); }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+})();
+
+/* Carrossel de fundo do hero com crossfade suave e navegação por pontos */
 (function () {
   var hero = document.querySelector(".hero");
   if (!hero) return;
   var slides = hero.querySelectorAll(".hero-slide");
   if (!slides.length) return;
 
+  var dotsWrap = document.getElementById("hero-dots");
   var INTERVALO = 7000;
   var DURACAO = 1700;
-  var atual = 0, timer = null, ocupado = false;
+  var atual = 0, timer = null, ocupado = false, dots = [];
 
   slides[0].classList.add("is-active");
 
-  function proximo() {
-    if (ocupado) return;
+  if (dotsWrap) {
+    for (var i = 0; i < slides.length; i++) {
+      (function (index) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "hero-dot";
+        b.setAttribute("aria-label", "Ir para a foto " + (index + 1));
+        b.addEventListener("click", function () { irPara(index); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      })(i);
+    }
+  }
+
+  function sincronizarDots() {
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle("is-active", i === atual);
+    }
+  }
+
+  function mostrar(n) {
+    var destino = ((n % slides.length) + slides.length) % slides.length;
+    if (destino === atual || ocupado) return;
     ocupado = true;
     var saindo = slides[atual];
-    atual = (atual + 1) % slides.length;
-    var entrando = slides[atual];
+    var entrando = slides[destino];
 
     entrando.classList.add("is-entering");
+    atual = destino;
+    sincronizarDots();
+
     setTimeout(function () {
       saindo.classList.remove("is-active");
       entrando.classList.remove("is-entering");
@@ -316,11 +349,19 @@ render();
     }, DURACAO + 50);
   }
 
+  function irPara(n) { mostrar(n); reiniciar(); }
+  function proximo() { mostrar(atual + 1); }
+
   function iniciar() { if (!timer) timer = setInterval(proximo, INTERVALO); }
   function parar() { clearInterval(timer); timer = null; }
+  function reiniciar() { parar(); iniciar(); }
 
+  hero.addEventListener("mouseenter", parar);
+  hero.addEventListener("mouseleave", iniciar);
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) { parar(); } else { iniciar(); }
   });
+
+  sincronizarDots();
   iniciar();
 })();
