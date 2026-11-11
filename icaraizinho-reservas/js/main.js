@@ -140,7 +140,7 @@ function render() {
     var amen = (i.am || []).map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("");
     return '<article class="card">' +
       '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
-        '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(ITEMS.indexOf(i)) + '" alt="' + esc(i.n) + '">' +
+        '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(ITEMS.indexOf(i)) + '" alt="Imagem ilustrativa de ' + esc(i.n) + '">' +
         '<span class="card-badge">' + esc(i.tag) + "</span>" +
         '<button class="card-wish" type="button" aria-pressed="false" aria-label="Salvar ' + esc(i.n) + ' nos favoritos">' + ICONS.heart + "</button>" +
       "</div>" +
@@ -192,7 +192,7 @@ $("grid").addEventListener("click", function (e) {
 
 $("cats").innerHTML = STYLES.map(function (x) {
   return '<button class="style-card" type="button" data-k="' + x.k + '" aria-label="Ver op\u00e7\u00f5es para ' + esc(x.n) + '" style="--g1:' + x.g[0] + ';--g2:' + x.g[1] + '">' +
-    '<span class="style-media"><img loading="lazy" decoding="async" width="1280" height="720" src="' + img(STYLES.indexOf(x)) + '" alt="' + esc(x.n) + '"></span>' +
+    '<span class="style-media"><img loading="lazy" decoding="async" width="1280" height="720" src="' + img(STYLES.indexOf(x)) + '" alt="Imagem ilustrativa de ' + esc(x.n) + ': ' + esc(x.d) + '"></span>' +
     '<span class="style-copy">' +
       "<b>" + esc(x.n) + "</b>" +
       '<span class="style-desc">' + esc(x.d) + "</span>" +
