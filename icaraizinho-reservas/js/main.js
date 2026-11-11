@@ -305,9 +305,12 @@ render();
   if (!slides.length) return;
 
   var dotsWrap = document.getElementById("hero-dots");
+  var toggle = document.getElementById("hero-toggle");
   var INTERVALO = 7000;
   var DURACAO = 1700;
   var atual = 0, timer = null, ocupado = false, dots = [];
+  var hover = false, foco = false, pausadoManual = false;
+  var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   slides[0].classList.add("is-active");
 
@@ -327,7 +330,10 @@ render();
 
   function sincronizarDots() {
     for (var i = 0; i < dots.length; i++) {
-      dots[i].classList.toggle("is-active", i === atual);
+      var ativo = i === atual;
+      dots[i].classList.toggle("is-active", ativo);
+      if (ativo) { dots[i].setAttribute("aria-current", "true"); }
+      else { dots[i].removeAttribute("aria-current"); }
     }
   }
 
@@ -355,14 +361,43 @@ render();
 
   function iniciar() { if (!timer) timer = setInterval(proximo, INTERVALO); }
   function parar() { clearInterval(timer); timer = null; }
-  function reiniciar() { parar(); iniciar(); }
+  function podeRodar() {
+    return !pausadoManual && !reduzido.matches && !hover && !foco && !document.hidden;
+  }
+  function atualizar() { parar(); if (podeRodar()) iniciar(); }
+  function reiniciar() { parar(); if (podeRodar()) iniciar(); }
 
-  hero.addEventListener("mouseenter", parar);
-  hero.addEventListener("mouseleave", iniciar);
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) { parar(); } else { iniciar(); }
+  function atualizarBotao() {
+    if (!toggle) return;
+    toggle.setAttribute("aria-pressed", String(pausadoManual));
+    toggle.setAttribute("aria-label", pausadoManual ? "Retomar apresentação automática" : "Pausar apresentação automática");
+    var label = toggle.querySelector(".hero-toggle__label");
+    if (label) label.textContent = pausadoManual ? "Retomar" : "Pausar";
+  }
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      pausadoManual = !pausadoManual;
+      atualizarBotao();
+      atualizar();
+    });
+  }
+
+  hero.addEventListener("mouseenter", function () { hover = true; atualizar(); });
+  hero.addEventListener("mouseleave", function () { hover = false; atualizar(); });
+  hero.addEventListener("focusin", function () { foco = true; atualizar(); });
+  hero.addEventListener("focusout", function (e) {
+    if (e.relatedTarget && hero.contains(e.relatedTarget)) return;
+    foco = false;
+    atualizar();
   });
 
+  document.addEventListener("visibilitychange", atualizar);
+
+  if (reduzido.addEventListener) { reduzido.addEventListener("change", atualizar); }
+  else if (reduzido.addListener) { reduzido.addListener(atualizar); }
+
   sincronizarDots();
-  iniciar();
+  atualizarBotao();
+  atualizar();
 })();
