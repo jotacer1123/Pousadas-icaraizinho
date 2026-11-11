@@ -1,3 +1,4 @@
+// TODO: número real, formato 55 + DDD + número, só dígitos
 var WA = "5588999999999";
 var LOCATION = "Icaraizinho de Amontada \u00b7 CE";
 
