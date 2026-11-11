@@ -438,6 +438,20 @@ img{display:block;max-width:100%;height:auto}
 .faq details[open] summary::after{transform:rotate(45deg);background:var(--terracotta);color:#fff}
 .faq details p{color:var(--muted);padding:0 0 18px;max-width:680px;font-size:14px}
 
+/* Legal pages */
+.legal{padding-top:clamp(40px,6vw,72px);padding-bottom:clamp(48px,7vw,88px)}
+.legal h1{font-size:clamp(30px,4vw,44px);line-height:1.08;margin-bottom:10px}
+.legal .legal-updated{color:var(--muted);font-size:13px;margin-bottom:28px}
+.legal h2{font-family:var(--font-body);font-size:18px;font-weight:700;color:var(--brand);margin:32px 0 8px}
+.legal p,.legal li{color:var(--brand-2);font-size:15px;line-height:1.7}
+.legal p+p{margin-top:10px}
+.legal ul{margin:8px 0 0;padding-left:22px}
+.legal li+li{margin-top:6px}
+.legal .todo{
+  margin-top:28px;padding:14px 16px;border-radius:var(--radius);
+  background:var(--cream);border:1px solid var(--hairline);color:var(--muted);font-size:13px;
+}
+
 /* Footer */
 .site-footer{background:#2b241e;color:rgba(255,255,255,.72);margin-top:20px}
 .footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;padding:56px 0 44px}
