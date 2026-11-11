@@ -66,6 +66,22 @@
   ];
 
   var cur = "hosp";
+
+  var FAV_KEY = "icaraizinho:favs";
+  var favs = {};
+  try {
+    var favRaw = localStorage.getItem(FAV_KEY);
+    var favArr = favRaw ? JSON.parse(favRaw) : [];
+    if (Array.isArray(favArr)) favArr.forEach(function (n) { favs[n] = true; });
+  } catch (e) {}
+  function ehFav(n) { return favs[n] === true; }
+  function salvarFavs() {
+    try { localStorage.setItem(FAV_KEY, JSON.stringify(Object.keys(favs))); } catch (e) {}
+  }
+  function alternarFav(n) {
+    if (favs[n]) { delete favs[n]; } else { favs[n] = true; }
+    salvarFavs();
+  }
   var $ = function (id) { return document.getElementById(id); };
   var money = function (n) { return "R$ " + n.toLocaleString("pt-BR"); };
   function fmt(d) { return d ? d.split("-").reverse().join("/") : ""; }
@@ -144,11 +160,13 @@
 
     $("grid").innerHTML = ITEMS.filter(function (i) { return i.t === cur; }).map(function (i) {
       var amen = (i.am || []).map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("");
+      var fav = ehFav(i.n);
+      var favLabel = (fav ? "Remover " : "Salvar ") + i.n + (fav ? " dos favoritos" : " nos favoritos");
       return '<article class="card">' +
         '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
           '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(ITEMS.indexOf(i)) + '" alt="Imagem ilustrativa de ' + esc(i.n) + '">' +
           '<span class="card-badge">' + esc(i.tag) + "</span>" +
-          '<button class="card-wish" type="button" aria-pressed="false" aria-label="Salvar ' + esc(i.n) + ' nos favoritos">' + ICONS.heart + "</button>" +
+          '<button class="card-wish' + (fav ? " is-saved" : "") + '" type="button" aria-pressed="' + fav + '" data-it="' + esc(i.n) + '" aria-label="' + esc(favLabel) + '">' + ICONS.heart + "</button>" +
         "</div>" +
         '<div class="card-body">' +
           '<p class="card-loc">' + esc(LOCATION) + "</p>" +
@@ -193,9 +211,12 @@
     $("grid").addEventListener("click", function (e) {
       var btn = e.target.closest(".card-wish");
       if (!btn) return;
-      var on = btn.getAttribute("aria-pressed") === "true";
-      btn.setAttribute("aria-pressed", String(!on));
-      btn.classList.toggle("is-saved", !on);
+      var name = btn.getAttribute("data-it");
+      alternarFav(name);
+      var on = ehFav(name);
+      btn.setAttribute("aria-pressed", String(on));
+      btn.classList.toggle("is-saved", on);
+      btn.setAttribute("aria-label", (on ? "Remover " : "Salvar ") + name + (on ? " dos favoritos" : " nos favoritos"));
     });
 
     $("cats").innerHTML = STYLES.map(function (x) {
