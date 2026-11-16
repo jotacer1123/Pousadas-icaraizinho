@@ -126,7 +126,8 @@
   }
 
   function dateText() {
-    var a = $("d-in").value, b = $("d-out").value;
+    var dIn = $("d-in"), dOut = $("d-out");
+    var a = dIn ? dIn.value : "", b = dOut ? dOut.value : "";
     if (!a) return "datas a combinar";
     if (b) return "de " + fmt(a) + " a " + fmt(b);
     return "data: " + fmt(a);
@@ -135,11 +136,16 @@
   function msg(it, type) {
     var t = catOf(type);
     var range = t.k === "hosp" || t.k === "casa";
-    var a = $("d-in").value, b = $("d-out").value, w;
+    var dIn = $("d-in"), dOut = $("d-out"), pax = $("pax");
+    var a = dIn ? dIn.value : "", b = dOut ? dOut.value : "", w;
     if (!a) { w = "datas a combinar"; }
     else if (range && b) { w = "de " + fmt(a) + " a " + fmt(b); }
     else { w = "data: " + fmt(a); }
-    return "Ol\u00e1! Quero reservar: " + it + ". " + w + ". " + $("pax").value + " h\u00f3spede(s).";
+    var hosp = pax ? pax.value : "2";
+    if (t.k === "passeio") {
+      return "Ol\u00e1! Quero reservar: " + it + ". " + w + ". " + hosp + " pessoa(s).";
+    }
+    return "Ol\u00e1! Quero reservar: " + it + ". " + w + ". " + hosp + " h\u00f3spede(s).";
   }
   function link(it, type) { return waLink(msg(it, type)); }
 
@@ -334,6 +340,76 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  var CASAS = [
+    { tag: "Casa inteira", n: "Casa Duna Dourada \u00b7 6 pessoas", r: "9,5", v: 41, p: 780, u: "noite", g: ["#e8a173", "#b96538"],
+      am: ["6 h\u00f3spedes", "Piscina", "Cozinha", "Wi-Fi"] },
+    { tag: "Casa inteira", n: "Casa Coqueiral \u00b7 8 pessoas", r: "9,1", v: 57, p: 980, u: "noite", g: ["#e8a173", "#d47b4a"],
+      am: ["8 h\u00f3spedes", "Piscina", "Churrasqueira", "Wi-Fi"] },
+    { tag: "Casa inteira", n: "Casa Mar\u00e9 Alta \u00b7 4 pessoas", r: "9,3", v: 34, p: 520, u: "noite", g: ["#efb089", "#b96538"],
+      am: ["4 h\u00f3spedes", "Cozinha", "Ar-condicionado", "Wi-Fi"] },
+    { tag: "Casa inteira", n: "Casa Jardim dos Ventos \u00b7 5 pessoas", r: "9,0", v: 29, p: 640, u: "noite", g: ["#fde3d2", "#c46f42"],
+      am: ["5 h\u00f3spedes", "Jardim", "Cozinha", "Estacionamento"] }
+  ];
+
+  var PASSEIOS = [
+    { tag: "Passeio", n: "Buggy pelas dunas e lagoas", r: "9,7", v: 312, p: 120, u: "pessoa", g: ["#f3c3a4", "#c46f42"],
+      am: ["Dura\u00e7\u00e3o 3h", "Guia local", "Fotos inclusas"] },
+    { tag: "Passeio", n: "Passeio de barco pela costa", r: "9,5", v: 168, p: 150, u: "pessoa", g: ["#efb089", "#d47b4a"],
+      am: ["Dura\u00e7\u00e3o 2h30", "Guia local", "Coletes inclusos"] },
+    { tag: "Passeio", n: "Tour pela Lagoa do Arrombado", r: "9,6", v: 141, p: 90, u: "pessoa", g: ["#e8a173", "#c46f42"],
+      am: ["Dura\u00e7\u00e3o 4h", "Transporte", "Paradas para banho"] },
+    { tag: "Passeio", n: "P\u00f4r do sol nas dunas", r: "9,8", v: 205, p: 60, u: "pessoa", g: ["#fde3d2", "#a85c34"],
+      am: ["Dura\u00e7\u00e3o 1h30", "Guia local", "Fotos inclusas"] }
+  ];
+
+  function renderSimpleGrid(gridId, items, type, actionLabel) {
+    var grid = $(gridId);
+    if (!grid) return;
+    grid.innerHTML = items.map(function (i, idx) {
+      var amen = (i.am || []).map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("");
+      var fav = ehFav(i.n);
+      var favLabel = (fav ? "Remover " : "Salvar ") + i.n + (fav ? " dos favoritos" : " nos favoritos");
+      var href = waLink(msg(i.n, type));
+      return '<article class="card">' +
+        '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
+          '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(idx) + '" alt="Imagem ilustrativa de ' + esc(i.n) + '">' +
+          '<span class="card-badge">' + esc(i.tag) + "</span>" +
+          '<button class="card-wish' + (fav ? " is-saved" : "") + '" type="button" aria-pressed="' + fav + '" data-it="' + esc(i.n) + '" aria-label="' + esc(favLabel) + '">' + ICONS.heart + "</button>" +
+        "</div>" +
+        '<div class="card-body">' +
+          '<p class="card-loc">' + esc(LOCATION) + "</p>" +
+          '<div class="card-head">' +
+            '<h3><a href="' + href + '" target="_blank" rel="noopener">' + esc(i.n) + "</a></h3>" +
+            '<div class="card-rating" aria-label="Nota ' + esc(i.r) + ' de 10">' +
+              '<span class="rating-score">' + esc(i.r) + "</span>" +
+              '<span class="rating-text">' + ratingLabel(i.r) + "</span>" +
+            "</div>" +
+          "</div>" +
+          '<div class="card-reviews">' + i.v + " avalia\u00e7\u00f5es</div>" +
+          '<div class="amenities">' + amen + "</div>" +
+          '<div class="card-foot">' +
+            '<div class="price"><small>Por ' + esc(i.u) + "</small><strong>" + money(i.p) + "</strong></div>" +
+            '<a class="card-link" target="_blank" rel="noopener" href="' + href + '">' + actionLabel + "</a>" +
+          "</div>" +
+        "</div>" +
+      "</article>";
+    }).join("");
+
+    grid.addEventListener("click", function (e) {
+      var btn = e.target.closest(".card-wish");
+      if (!btn) return;
+      var name = btn.getAttribute("data-it");
+      alternarFav(name);
+      var on = ehFav(name);
+      btn.setAttribute("aria-pressed", String(on));
+      btn.classList.toggle("is-saved", on);
+      btn.setAttribute("aria-label", (on ? "Remover " : "Salvar ") + name + (on ? " dos favoritos" : " nos favoritos"));
+    });
+  }
+
+  function initCasas() { renderSimpleGrid("casas-grid", CASAS, "casa", "Ver disponibilidade"); }
+  function initPasseios() { renderSimpleGrid("passeios-grid", PASSEIOS, "passeio", "Reservar passeio"); }
+
   /* Carrossel de fundo do hero com crossfade suave e navegação por pontos */
   function initCarousel() {
     var hero = document.querySelector(".hero");
@@ -440,6 +516,8 @@
   }
 
   if ($("grid")) initIndex();
+  if ($("casas-grid")) initCasas();
+  if ($("passeios-grid")) initPasseios();
   initShared();
   initHeader();
   initCarousel();
