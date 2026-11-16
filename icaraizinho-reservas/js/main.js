@@ -3,37 +3,14 @@
 
   // TODO: número real, formato 55 + DDD + número, só dígitos
   var WA = "5588999999999";
-  var LOCATION = "Icaraizinho de Amontada \u00b7 CE";
-
-  var ICONS = {
-    hosp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M6 10V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M6 14h4"/></svg>',
-    casa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></svg>',
-    passeio: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>',
-    transfer: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16V8a1 1 0 0 1 1-1h9l4 4h3a1 1 0 0 1 1 1v4"/><path d="M3 16h18"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',
-    alug: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17 10 8h4l4 9"/><path d="M9 8h5"/></svg>',
-    heart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.6 12 20 12 20Z"/></svg>',
-    family: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M6 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="5" cy="10" r="2"/><circle cx="19" cy="10" r="2"/></svg>',
-    mountain: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 19 6-9 4 5 3-4 5 8Z"/><path d="m7 10 2 2"/></svg>',
-    leaf: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 10 12 5 20 5c0 8-5 14-13 14"/><path d="M5 19c2-4 5-6 9-8"/></svg>',
-    paw: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="9" r="1.6"/><circle cx="12" cy="7" r="1.6"/><circle cx="17" cy="9" r="1.6"/><path d="M8 16a4 4 0 0 1 8 0c0 2-2 3-4 3s-4-1-4-3Z"/></svg>',
-    sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>'
-  };
+  var HEART_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.6 12 20 12 20Z"/></svg>';
 
   var TABS = [
-    { k: "hosp", n: "Hospedagem", d: "Pousadas e chal\u00e9s", g: ["#efb089", "#d47b4a"] },
-    { k: "casa", n: "Casas de temporada", d: "Casas inteiras", g: ["#e8a173", "#b96538"] },
-    { k: "passeio", n: "Passeios", d: "Buggy, kite e mais", g: ["#f3c3a4", "#c46f42"] },
-    { k: "transfer", n: "Transfer", d: "Aeroporto de Fortaleza", g: ["#fde3d2", "#a85c34"] },
-    { k: "alug", n: "Alugu\u00e9is", d: "Quadriciclo e bike", g: ["#efb089", "#c46f42"] }
-  ];
-
-  var STYLES = [
-    { k: "hosp", icon: "heart", n: "Rom\u00e2ntico", d: "Pousadas e chal\u00e9s para uma estadia a dois", s: "style-romantico", g: ["#efb089", "#d47b4a"] },
-    { k: "casa", icon: "family", n: "Fam\u00edlia", d: "Casas espa\u00e7osas com estrutura para crian\u00e7as", s: "style-familia", g: ["#e8a173", "#b96538"] },
-    { k: "passeio", icon: "mountain", n: "Aventura", d: "Buggy, kite e dunas para quem gosta de adrenalina", s: "style-aventura", g: ["#f3c3a4", "#c46f42"] },
-    { k: "passeio", icon: "leaf", n: "Natureza", d: "Lagoas, dunas e p\u00f4r do sol longe da rotina", s: "style-natureza", g: ["#fde3d2", "#a85c34"] },
-    { k: "casa", icon: "paw", n: "Pet friendly", d: "Casas que recebem o seu pet", s: "style-pet", g: ["#e8a173", "#c46f42"] },
-    { k: "hosp", icon: "sun", n: "Fim de semana", d: "Escapadas curtas para recarregar", s: "style-fim-de-semana", g: ["#efb089", "#a85c34"] }
+    { k: "hosp", n: "Pousadas" },
+    { k: "casa", n: "Casas" },
+    { k: "passeio", n: "Passeios" },
+    { k: "transfer", n: "Transfer" },
+    { k: "alug", n: "Aluguéis" }
   ];
 
   var ITEMS = [
@@ -64,8 +41,6 @@
     { t: "alug", tag: "Aluguel", n: "Bicicleta \u00b7 di\u00e1ria", r: "9,0", v: 44, p: 40, u: "dia", g: ["#efb089", "#b96538"], s: "bicicleta",
       d: "Bicicleta para explorar a vila e as praias pr\u00f3ximas no seu ritmo.", am: ["Equipamento", "Seguro", "Di\u00e1ria"] }
   ];
-
-  var cur = "hosp";
 
   var FAV_KEY = "icaraizinho:favs";
   var favs = {};
@@ -102,16 +77,7 @@
     "img/pousadas_melhoradas_fotos_e_ia/pousada-3-1280.webp",
     "img/pousadas_melhoradas_fotos_e_ia/pousada-4-1280.webp"
   ];
-  function img(n) { return PHOTOS[((n % PHOTOS.length) + PHOTOS.length) % PHOTOS.length]; }
-  function catOf(k) { return TABS.filter(function (x) { return x.k === k; })[0] || TABS[0]; }
-  function ratingLabel(r) {
-    var n = parseFloat(String(r).replace(",", "."));
-    if (n >= 9.5) return "Excepcional";
-    if (n >= 9) return "Excelente";
-    if (n >= 8.5) return "Muito bom";
-    if (n >= 8) return "Bom";
-    return "Agrad\u00e1vel";
-  }
+  function img(n) { return PHOTOS[n % PHOTOS.length]; }
 
   function toISO(d) {
     var m = String(d.getMonth() + 1).padStart(2, "0");
@@ -125,170 +91,143 @@
     return toISO(d);
   }
 
-  function dateText() {
-    var dIn = $("d-in"), dOut = $("d-out");
-    var a = dIn ? dIn.value : "", b = dOut ? dOut.value : "";
-    if (!a) return "datas a combinar";
-    if (b) return "de " + fmt(a) + " a " + fmt(b);
-    return "data: " + fmt(a);
-  }
+  function dateText(includeCheckout) {
+    var checkIn = $("d-in");
+    var checkOut = $("d-out");
+    if (!checkIn || !checkIn.value || !checkIn.validity.valid) return "datas a combinar";
 
-  function msg(it, type) {
-    var t = catOf(type);
-    var range = t.k === "hosp" || t.k === "casa";
-    var dIn = $("d-in"), dOut = $("d-out"), pax = $("pax");
-    var a = dIn ? dIn.value : "", b = dOut ? dOut.value : "", w;
-    if (!a) { w = "datas a combinar"; }
-    else if (range && b) { w = "de " + fmt(a) + " a " + fmt(b); }
-    else { w = "data: " + fmt(a); }
-    var hosp = pax ? pax.value : "2";
-    if (t.k === "passeio") {
-      return "Ol\u00e1! Quero reservar: " + it + ". " + w + ". " + hosp + " pessoa(s).";
+    var arrival = fmt(checkIn.value);
+    if (includeCheckout && checkOut && checkOut.value && checkOut.validity.valid) {
+      return "de " + arrival + " a " + fmt(checkOut.value);
     }
-    return "Ol\u00e1! Quero reservar: " + it + ". " + w + ". " + hosp + " h\u00f3spede(s).";
-  }
-  function link(it, type) { return waLink(msg(it, type)); }
-
-  function setStatus(text) {
-    var el = $("search-status");
-    if (el) el.textContent = text || "";
+    return "data: " + arrival;
   }
 
-  function render() {
-    var t = catOf(cur);
-
-    $("tabs").innerHTML = TABS.map(function (x) {
-      return '<button class="tab" type="button" aria-pressed="' + (x.k === cur) + '" data-k="' + x.k + '">' + esc(x.n) + "</button>";
-    }).join("");
-
-    $("t-dest").textContent = "Mais reservados: " + t.n.toLowerCase();
-    $("s-dest").textContent = t.d + " em Icaraizinho de Amontada. Se est\u00e1 aqui, \u00e9 porque vale a viagem.";
-
-    $("grid").innerHTML = ITEMS.filter(function (i) { return i.t === cur; }).map(function (i) {
-      var amen = (i.am || []).map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("");
-      var fav = ehFav(i.n);
-      var favLabel = (fav ? "Remover " : "Salvar ") + i.n + (fav ? " dos favoritos" : " nos favoritos");
-      return '<article class="card">' +
-        '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
-          '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(ITEMS.indexOf(i)) + '" alt="Imagem ilustrativa de ' + esc(i.n) + '">' +
-          '<span class="card-badge">' + esc(i.tag) + "</span>" +
-          '<button class="card-wish' + (fav ? " is-saved" : "") + '" type="button" aria-pressed="' + fav + '" data-it="' + esc(i.n) + '" aria-label="' + esc(favLabel) + '">' + ICONS.heart + "</button>" +
-        "</div>" +
-        '<div class="card-body">' +
-          '<p class="card-loc">' + esc(LOCATION) + "</p>" +
-          '<div class="card-head">' +
-            "<h3><a href=\"" + link(i.n, i.t) + "\" target=\"_blank\" rel=\"noopener\" data-it=\"" + esc(i.n) + "\" data-type=\"" + i.t + "\">" + esc(i.n) + "</a></h3>" +
-            '<div class="card-rating" aria-label="Nota ' + esc(i.r) + ' de 10">' +
-              '<span class="rating-score">' + esc(i.r) + "</span>" +
-              '<span class="rating-text">' + ratingLabel(i.r) + "</span>" +
-            "</div>" +
-          "</div>" +
-          '<div class="card-reviews">' + i.v + " avalia\u00e7\u00f5es</div>" +
-          '<div class="amenities">' + amen + "</div>" +
-          '<div class="card-foot">' +
-            '<div class="price"><small>Por ' + esc(i.u) + "</small><strong>" + money(i.p) + "</strong></div>" +
-            '<a class="card-link" target="_blank" rel="noopener" data-it="' + esc(i.n) + '" data-type="' + i.t + '" aria-label="Ver disponibilidade de ' + esc(i.n) + ' pelo WhatsApp" href="' + link(i.n, i.t) + '">Ver disponibilidade</a>' +
-          "</div>" +
-        "</div>" +
-      "</article>";
-    }).join("");
-
-    links();
+  function msg(item, type) {
+    var stay = type === "hosp" || type === "casa";
+    var guests = $("pax");
+    var count = guests ? guests.value : "2";
+    var group = stay ? " hóspede(s)." : " pessoa(s).";
+    return "Olá! Quero reservar: " + item + ". " + dateText(stay) + ". " + count + group;
   }
 
-  function links() {
-    var a = document.querySelectorAll("a[data-it]");
-    for (var i = 0; i < a.length; i++) {
-      a[i].href = link(a[i].getAttribute("data-it"), a[i].getAttribute("data-type"));
-    }
-    var pk = $("pk");
-    if (pk) pk.href = link("Pacote casa + transfer + passeio", "hosp");
+  function link(item, type) { return waLink(msg(item, type)); }
+
+  function favoriteLabel(name, saved) {
+    return saved ? "Remover " + name + " dos favoritos" : "Salvar " + name + " nos favoritos";
+  }
+
+  function toggleCardFavorite(event) {
+    var button = event.target.closest(".card-wish");
+    if (!button) return;
+    var name = button.dataset.it;
+    alternarFav(name);
+    var saved = ehFav(name);
+    button.setAttribute("aria-pressed", String(saved));
+    button.classList.toggle("is-saved", saved);
+    button.setAttribute("aria-label", favoriteLabel(name, saved));
+  }
+
+  function renderCard(item, type, photoIndex, actionLabel) {
+    var name = esc(item.n);
+    var amenities = (item.am || []).map(function (amenity) { return "<span>" + esc(amenity) + "</span>"; }).join("");
+    var saved = ehFav(item.n);
+    var favoriteClass = saved ? " is-saved" : "";
+    var bookingLabel = esc(actionLabel + " pelo WhatsApp · " + item.n);
+    return '<article class="card">' +
+      '<div class="card-media" style="--g1:' + item.g[0] + ';--g2:' + item.g[1] + '">' +
+        '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(photoIndex) + '" alt="Imagem ilustrativa de ' + name + '">' +
+        '<span class="card-badge">' + esc(item.tag) + '</span>' +
+        '<button class="card-wish' + favoriteClass + '" type="button" aria-pressed="' + saved + '"' +
+          ' data-it="' + name + '" aria-label="' + esc(favoriteLabel(item.n, saved)) + '">' + HEART_ICON + '</button>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<div class="card-head">' +
+          '<h3>' + name + '</h3>' +
+          '<div class="card-rating">' +
+            '<span class="rating-score">' + esc(item.r) + ' / 10</span>' +
+            '<span class="card-reviews">' + item.v + ' avaliações</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="amenities">' + amenities + '</div>' +
+        '<div class="card-foot">' +
+          '<div class="price"><small>Por ' + esc(item.u) + '</small><strong>' + money(item.p) + '</strong></div>' +
+          '<a class="card-link" target="_blank" rel="noopener" data-it="' + name + '" data-type="' + type + '"' +
+            ' aria-label="' + bookingLabel + '" href="' + link(item.n, type) + '">' + esc(actionLabel) + '</a>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
   }
 
   function initIndex() {
-    $("tabs").addEventListener("click", function (e) {
-      var btn = e.target.closest(".tab");
-      if (!btn) return;
-      cur = btn.getAttribute("data-k");
-      setStatus("");
-      render();
-    });
+    var form = $("reservar");
+    var checkIn = $("d-in");
+    var checkOut = $("d-out");
+    var guests = $("pax");
+    var tabs = $("experiencias");
+    var grid = $("grid");
+    var packageLink = $("pk");
 
-    $("grid").addEventListener("click", function (e) {
-      var btn = e.target.closest(".card-wish");
-      if (!btn) return;
-      var name = btn.getAttribute("data-it");
-      alternarFav(name);
-      var on = ehFav(name);
-      btn.setAttribute("aria-pressed", String(on));
-      btn.classList.toggle("is-saved", on);
-      btn.setAttribute("aria-label", (on ? "Remover " : "Salvar ") + name + (on ? " dos favoritos" : " nos favoritos"));
-    });
-
-    $("cats").innerHTML = STYLES.map(function (x) {
-      return '<button class="style-card" type="button" data-k="' + x.k + '" aria-label="Ver op\u00e7\u00f5es para ' + esc(x.n) + '" style="--g1:' + x.g[0] + ';--g2:' + x.g[1] + '">' +
-        '<span class="style-media"><img loading="lazy" decoding="async" width="1280" height="720" src="' + img(STYLES.indexOf(x)) + '" alt="Imagem ilustrativa de ' + esc(x.n) + ': ' + esc(x.d) + '"></span>' +
-        '<span class="style-copy">' +
-          "<b>" + esc(x.n) + "</b>" +
-          '<span class="style-desc">' + esc(x.d) + "</span>" +
-        "</span>" +
-      "</button>";
+    tabs.innerHTML = TABS.map(function (tab) {
+      return '<button class="tab" type="button" aria-controls="grid" data-k="' + tab.k + '">' + esc(tab.n) + '</button>';
     }).join("");
+    var buttons = tabs.querySelectorAll(".tab");
 
-    $("cats").addEventListener("click", function (e) {
-      var b = e.target.closest(".style-card");
-      if (!b) return;
-      cur = b.getAttribute("data-k");
-      setStatus("");
-      render();
-      $("hospedagens").scrollIntoView();
-    });
-
-    function syncDates() {
-      var min = $("d-in").value ? addDays($("d-in").value, 1) : todayISO();
-      $("d-out").min = min;
-      if ($("d-out").value && $("d-out").value < min) {
-        $("d-out").value = "";
-      }
+    function renderCatalog(category) {
+      buttons.forEach(function (button) {
+        button.setAttribute("aria-pressed", String(button.dataset.k === category));
+      });
+      grid.innerHTML = ITEMS.filter(function (item) {
+        return item.t === category;
+      }).map(function (item) {
+        return renderCard(item, item.t, ITEMS.indexOf(item), "Ver disponibilidade");
+      }).join("");
     }
 
-    ["d-in", "d-out", "pax"].forEach(function (id) {
-      $(id).addEventListener("change", function () {
-        if (id === "d-in") syncDates();
-        if (id === "d-out" && $("d-in").value && $("d-out").value) {
-          if ($("d-out").value <= $("d-in").value) {
-            setStatus("A data de check-out precisa ser depois do check-in.");
-            $("d-out").value = "";
-          } else {
-            setStatus("");
-          }
-        }
-        links();
+    function syncDates() {
+      var today = todayISO();
+      var arrival = checkIn.value >= today ? checkIn.value : today;
+      checkIn.min = today;
+      checkIn.required = Boolean(checkOut.value);
+      checkOut.min = addDays(arrival, 1);
+    }
+
+    function updateBookingLinks() {
+      grid.querySelectorAll(".card-link").forEach(function (anchor) {
+        anchor.href = link(anchor.dataset.it, anchor.dataset.type);
+      });
+      packageLink.href = link("Pacote casa + transfer + passeio", "hosp");
+    }
+
+    tabs.addEventListener("click", function (event) {
+      var button = event.target.closest(".tab");
+      if (button && button.getAttribute("aria-pressed") !== "true") renderCatalog(button.dataset.k);
+    });
+
+    document.querySelectorAll('a[href="#hospedagens"]').forEach(function (anchor) {
+      anchor.addEventListener("click", function () { renderCatalog("hosp"); });
+    });
+    grid.addEventListener("click", toggleCardFavorite);
+
+    [checkIn, checkOut, guests].forEach(function (field) {
+      field.addEventListener("change", function () {
+        syncDates();
+        updateBookingLinks();
       });
     });
 
-    $("reservar").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var a = $("d-in").value, b = $("d-out").value;
-      if (a && b && b <= a) {
-        setStatus("A data de check-out precisa ser depois do check-in.");
-        $("d-out").focus();
-        return;
-      }
-      if (a && a < todayISO()) {
-        setStatus("Escolha uma data a partir de hoje.");
-        $("d-in").focus();
-        return;
-      }
-      setStatus("Escolha uma op\u00e7\u00e3o abaixo e finalize pelo WhatsApp.");
-      render();
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      syncDates();
+      if (!form.reportValidity()) return;
+      updateBookingLinks();
+      $("catalog-title").focus({ preventScroll: true });
       $("hospedagens").scrollIntoView();
     });
 
-    var t0 = todayISO();
-    $("d-in").min = t0;
-    $("d-out").min = addDays(t0, 1);
-    render();
+    syncDates();
+    renderCatalog("hosp");
+    updateBookingLinks();
   }
 
   function initShared() {
@@ -364,161 +303,18 @@
 
   function renderSimpleGrid(gridId, items, type, actionLabel) {
     var grid = $(gridId);
-    if (!grid) return;
-    grid.innerHTML = items.map(function (i, idx) {
-      var amen = (i.am || []).map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("");
-      var fav = ehFav(i.n);
-      var favLabel = (fav ? "Remover " : "Salvar ") + i.n + (fav ? " dos favoritos" : " nos favoritos");
-      var href = waLink(msg(i.n, type));
-      return '<article class="card">' +
-        '<div class="card-media" style="--g1:' + i.g[0] + ';--g2:' + i.g[1] + '">' +
-          '<img loading="lazy" decoding="async" width="1280" height="720" src="' + img(idx) + '" alt="Imagem ilustrativa de ' + esc(i.n) + '">' +
-          '<span class="card-badge">' + esc(i.tag) + "</span>" +
-          '<button class="card-wish' + (fav ? " is-saved" : "") + '" type="button" aria-pressed="' + fav + '" data-it="' + esc(i.n) + '" aria-label="' + esc(favLabel) + '">' + ICONS.heart + "</button>" +
-        "</div>" +
-        '<div class="card-body">' +
-          '<p class="card-loc">' + esc(LOCATION) + "</p>" +
-          '<div class="card-head">' +
-            '<h3><a href="' + href + '" target="_blank" rel="noopener">' + esc(i.n) + "</a></h3>" +
-            '<div class="card-rating" aria-label="Nota ' + esc(i.r) + ' de 10">' +
-              '<span class="rating-score">' + esc(i.r) + "</span>" +
-              '<span class="rating-text">' + ratingLabel(i.r) + "</span>" +
-            "</div>" +
-          "</div>" +
-          '<div class="card-reviews">' + i.v + " avalia\u00e7\u00f5es</div>" +
-          '<div class="amenities">' + amen + "</div>" +
-          '<div class="card-foot">' +
-            '<div class="price"><small>Por ' + esc(i.u) + "</small><strong>" + money(i.p) + "</strong></div>" +
-            '<a class="card-link" target="_blank" rel="noopener" href="' + href + '">' + actionLabel + "</a>" +
-          "</div>" +
-        "</div>" +
-      "</article>";
+    grid.innerHTML = items.map(function (item, index) {
+      return renderCard(item, type, index, actionLabel);
     }).join("");
-
-    grid.addEventListener("click", function (e) {
-      var btn = e.target.closest(".card-wish");
-      if (!btn) return;
-      var name = btn.getAttribute("data-it");
-      alternarFav(name);
-      var on = ehFav(name);
-      btn.setAttribute("aria-pressed", String(on));
-      btn.classList.toggle("is-saved", on);
-      btn.setAttribute("aria-label", (on ? "Remover " : "Salvar ") + name + (on ? " dos favoritos" : " nos favoritos"));
-    });
+    grid.addEventListener("click", toggleCardFavorite);
   }
 
   function initCasas() { renderSimpleGrid("casas-grid", CASAS, "casa", "Ver disponibilidade"); }
   function initPasseios() { renderSimpleGrid("passeios-grid", PASSEIOS, "passeio", "Reservar passeio"); }
-
-  /* Carrossel de fundo do hero com crossfade suave e navegação por pontos */
-  function initCarousel() {
-    var hero = document.querySelector(".hero");
-    if (!hero) return;
-    var slides = hero.querySelectorAll(".hero-slide");
-    if (!slides.length) return;
-
-    var dotsWrap = document.getElementById("hero-dots");
-    var toggle = document.getElementById("hero-toggle");
-    var INTERVALO = 7000;
-    var DURACAO = 1700;
-    var atual = 0, timer = null, ocupado = false, dots = [];
-    var hover = false, foco = false, pausadoManual = false;
-    var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    slides[0].classList.add("is-active");
-
-    if (dotsWrap) {
-      for (var i = 0; i < slides.length; i++) {
-        (function (index) {
-          var b = document.createElement("button");
-          b.type = "button";
-          b.className = "hero-dot";
-          b.setAttribute("aria-label", "Ir para a foto " + (index + 1));
-          b.addEventListener("click", function () { irPara(index); });
-          dotsWrap.appendChild(b);
-          dots.push(b);
-        })(i);
-      }
-    }
-
-    function sincronizarDots() {
-      for (var i = 0; i < dots.length; i++) {
-        var ativo = i === atual;
-        dots[i].classList.toggle("is-active", ativo);
-        if (ativo) { dots[i].setAttribute("aria-current", "true"); }
-        else { dots[i].removeAttribute("aria-current"); }
-      }
-    }
-
-    function mostrar(n) {
-      var destino = ((n % slides.length) + slides.length) % slides.length;
-      if (destino === atual || ocupado) return;
-      ocupado = true;
-      var saindo = slides[atual];
-      var entrando = slides[destino];
-
-      entrando.classList.add("is-entering");
-      atual = destino;
-      sincronizarDots();
-
-      setTimeout(function () {
-        saindo.classList.remove("is-active");
-        entrando.classList.remove("is-entering");
-        entrando.classList.add("is-active");
-        ocupado = false;
-      }, DURACAO + 50);
-    }
-
-    function irPara(n) { mostrar(n); reiniciar(); }
-    function proximo() { mostrar(atual + 1); }
-
-    function iniciar() { if (!timer) timer = setInterval(proximo, INTERVALO); }
-    function parar() { clearInterval(timer); timer = null; }
-    function podeRodar() {
-      return !pausadoManual && !reduzido.matches && !hover && !foco && !document.hidden;
-    }
-    function atualizar() { parar(); if (podeRodar()) iniciar(); }
-    function reiniciar() { parar(); if (podeRodar()) iniciar(); }
-
-    function atualizarBotao() {
-      if (!toggle) return;
-      toggle.setAttribute("aria-pressed", String(pausadoManual));
-      toggle.setAttribute("aria-label", pausadoManual ? "Retomar apresenta\u00e7\u00e3o autom\u00e1tica" : "Pausar apresenta\u00e7\u00e3o autom\u00e1tica");
-      var label = toggle.querySelector(".hero-toggle__label");
-      if (label) label.textContent = pausadoManual ? "Retomar" : "Pausar";
-    }
-
-    if (toggle) {
-      toggle.addEventListener("click", function () {
-        pausadoManual = !pausadoManual;
-        atualizarBotao();
-        atualizar();
-      });
-    }
-
-    hero.addEventListener("mouseenter", function () { hover = true; atualizar(); });
-    hero.addEventListener("mouseleave", function () { hover = false; atualizar(); });
-    hero.addEventListener("focusin", function () { foco = true; atualizar(); });
-    hero.addEventListener("focusout", function (e) {
-      if (e.relatedTarget && hero.contains(e.relatedTarget)) return;
-      foco = false;
-      atualizar();
-    });
-
-    document.addEventListener("visibilitychange", atualizar);
-
-    if (reduzido.addEventListener) { reduzido.addEventListener("change", atualizar); }
-    else if (reduzido.addListener) { reduzido.addListener(atualizar); }
-
-    sincronizarDots();
-    atualizarBotao();
-    atualizar();
-  }
 
   if ($("grid")) initIndex();
   if ($("casas-grid")) initCasas();
   if ($("passeios-grid")) initPasseios();
   initShared();
   initHeader();
-  initCarousel();
 })();
