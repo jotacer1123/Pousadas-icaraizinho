@@ -42,7 +42,7 @@ Use apenas dígitos, no formato `55` + DDD + número. Todos os links `wa.me` do 
 
 ## Editar propriedades e experiências
 
-Os dados dos cards estão em `ITEMS`, também em `js/main.js`. Cada item tem tipo (`t`), nome (`n`), nota (`r`), número de avaliações (`v`), preço (`p`), unidade (`u`), descrição (`d`) e comodidades (`am`). As categorias do catálogo usam `TABS`.
+Os dados dos cards estão em `ITEMS`, também em `js/main.js`. Cada item tem tipo (`t`), nome (`n`), nota (`r`), número de avaliações (`v`), preço (`p`), unidade (`u`), descrição (`d`) e comodidades (`am`). As abas usam `TABS` e as categorias de estilo usam `STYLES`.
 
 Valores, notas e fotos atuais são ilustrativos — substitua por dados reais antes de divulgar como oferta.
 
