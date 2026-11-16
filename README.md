@@ -42,7 +42,9 @@ Use apenas dígitos, no formato `55` + DDD + número. Todos os links `wa.me` do 
 
 ## Editar propriedades e experiências
 
-Os dados dos cards estão em `ITEMS`, também em `js/main.js`. Cada item tem tipo (`t`), nome (`n`), nota (`r`), número de avaliações (`v`), preço (`p`), unidade (`u`), descrição (`d`) e comodidades (`am`). As abas usam `TABS` e as categorias de estilo usam `STYLES`.
+Os cartões usam `ITEMS` na página inicial e `CASAS` e `PASSEIOS` nas páginas de categoria. Use `maxGuests` para cadastrar a capacidade e `distance` para informar uma distância medida até a praia.
+
+Preencha a tarifa real em `p` antes de ativar `priceConfirmed`. Para publicar avaliações, preencha a nota em `r`, a contagem em `v` e ative `reviewsConfirmed`. A ordenação por diária aparece quando as opções exibidas têm tarifas por noite confirmadas.
 
 Valores, notas e fotos atuais são ilustrativos — substitua por dados reais antes de divulgar como oferta.
 

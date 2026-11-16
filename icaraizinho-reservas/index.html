@@ -139,37 +139,25 @@
         <p class="hero-sub">Pousadas, casas e experiências com curadoria local. Reserve direto, sem catálogo infinito.</p>
       </div>
 
-      <form class="search" id="reservar" autocomplete="off" novalidate>
+      <form class="search" id="reservar" role="search" aria-label="Buscar hospedagens">
         <div class="field field-dest">
-          <label for="dest">
+          <span class="field-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
             Destino
-          </label>
-          <select id="dest" name="destino">
-            <option selected>Icaraizinho de Amontada · CE</option>
-          </select>
+          </span>
+          <span class="field-value">Icaraizinho de Amontada · CE</span>
         </div>
-        <div class="field field-dates">
+        <button class="field field-dates" type="button" id="stay-date-trigger" aria-haspopup="dialog" aria-controls="stay-dates">
           <span class="field-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
-            Datas
+            <span class="field-name">Datas da estadia</span>
           </span>
-          <div class="dates">
-            <div class="date-input">
-              <input type="date" id="d-in" name="checkin" aria-label="Check-in">
-              <svg class="date-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
-            </div>
-            <span class="date-sep" aria-hidden="true">→</span>
-            <div class="date-input">
-              <input type="date" id="d-out" name="checkout" aria-label="Check-out">
-              <svg class="date-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
-            </div>
-          </div>
-        </div>
+          <span class="field-value" id="stay-date-summary">Adicionar datas</span>
+        </button>
         <div class="field field-guests">
-          <label for="pax">
+          <label class="field-label" for="pax">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
-            Hóspedes
+            <span class="field-name">Hóspedes</span>
           </label>
           <select id="pax" name="hospedes">
             <option value="1">1 hóspede</option>
@@ -178,25 +166,46 @@
             <option value="4">4 hóspedes</option>
             <option value="5">5 hóspedes</option>
             <option value="6">6 hóspedes</option>
-            <option value="10">7 a 10 hóspedes</option>
+            <option value="7">7 hóspedes</option>
+            <option value="8">8 hóspedes</option>
+            <option value="9">9 hóspedes</option>
+            <option value="10">10 hóspedes</option>
           </select>
         </div>
+        <input type="hidden" id="d-in" name="checkin">
+        <input type="hidden" id="d-out" name="checkout">
         <button class="btn btn-search" type="submit">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
-          Pesquisar
+          Ver hospedagens
         </button>
       </form>
-      <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
-
-      <div class="search-trust">
-        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Reserva direta com a equipe local</span>
-        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Curadoria de pousadas e experiências</span>
-        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Pague por Pix ou cartão</span>
-      </div>
     </div>
 
     <div class="hero__dots" id="hero-dots" aria-label="Navegação do carrossel"></div>
   </section>
+
+  <dialog class="stay-calendar" id="stay-dates" aria-labelledby="stay-date-title">
+    <div class="calendar-head">
+      <div>
+        <h2 id="stay-date-title">Datas da estadia</h2>
+        <p id="stay-date-instruction" aria-live="polite"></p>
+      </div>
+      <button class="calendar-icon" id="stay-date-close" type="button" aria-label="Fechar calendário">×</button>
+    </div>
+    <div class="calendar-month">
+      <button class="calendar-icon" id="stay-date-prev" type="button" aria-label="Mês anterior">‹</button>
+      <p id="stay-date-month" aria-live="polite"></p>
+      <button class="calendar-icon" id="stay-date-next" type="button" aria-label="Próximo mês">›</button>
+    </div>
+    <div class="calendar-weekdays" aria-hidden="true">
+      <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+    </div>
+    <div class="calendar-days" id="stay-date-days" role="group" aria-labelledby="stay-date-month"></div>
+    <div class="calendar-actions">
+      <button class="calendar-clear" id="stay-date-clear" type="button">Limpar datas</button>
+      <button class="btn btn-primary" id="stay-date-apply" type="button">Aplicar datas</button>
+    </div>
+  </dialog>
 
   <section class="benefits" aria-label="Por que reservar com a gente">
     <div class="wrap">
@@ -221,33 +230,58 @@
     </div>
   </section>
 
-  <section class="section" id="hospedagens">
+  <section class="section" id="hospedagens" aria-labelledby="catalog-title">
     <div class="wrap">
       <div class="section-head">
-        <div>
-          <h2>Ofertas em Icaraizinho</h2>
-          <p id="s-dest">Propriedades selecionadas para você reservar direto.</p>
-        </div>
-        <a class="section-link" href="#experiencias">Ver todas as opções →</a>
+        <h2 id="catalog-title" tabindex="-1">Hospedagens em Icaraizinho</h2>
       </div>
-
+      <div class="search-context" id="search-context" hidden>
+        <p id="search-criteria" aria-live="polite"></p>
+        <a href="#reservar" id="edit-search">Editar busca</a>
+      </div>
       <div class="tabs" role="group" aria-label="Filtrar por categoria" id="tabs"></div>
-      <h3 class="grid-title" id="t-dest">Mais reservados</h3>
+      <div class="catalog-toolbar">
+        <p class="catalog-count" id="catalog-count" role="status"></p>
+        <div class="catalog-filters" id="catalog-filters" role="group" aria-label="Comodidades" hidden>
+          <button class="catalog-filter" type="button" data-amenity="Piscina" aria-pressed="false">Piscina</button>
+          <button class="catalog-filter" type="button" data-amenity="Café da manhã" aria-pressed="false">Café da manhã</button>
+        </div>
+        <label class="catalog-sort" id="catalog-sort" hidden>
+          Ordenar
+          <select id="price-order">
+            <option value="default">Ordem do catálogo</option>
+            <option value="price">Menor diária</option>
+          </select>
+        </label>
+      </div>
       <div class="cards" id="grid"></div>
       <noscript><p class="note">Ative o JavaScript para ver as propriedades e experiências.</p></noscript>
-      <p class="note">Valores ilustrativos. As fotos são imagens de referência, não dos estabelecimentos. O botão abre o WhatsApp com sua solicitação já preenchida.</p>
+      <p class="note">Fotos de referência. Consulte valores e disponibilidade com a equipe pelo WhatsApp.</p>
     </div>
   </section>
 
   <section class="section section-soft" id="experiencias">
     <div class="wrap">
       <div class="section-head">
-        <div>
-          <h2>Navegue por estilo de viagem</h2>
-          <p>Encontre a experiência certa para o seu momento — e veja as opções selecionadas.</p>
-        </div>
+        <h2>Roteiros em Icaraizinho</h2>
       </div>
-      <div class="styles-grid" id="cats"></div>
+      <div class="styles-grid">
+        <article class="itinerary">
+          <h3>Manhã nas dunas</h3>
+          <p>Separe cerca de três horas para um passeio de buggy com paradas para banho nas lagoas.</p>
+          <a class="section-link" href="passeios.html" target="_blank" rel="noopener" data-it="Buggy pelas dunas e lagoas" data-type="passeio" aria-label="Consultar o passeio de buggy pelo WhatsApp">Consultar roteiro →</a>
+        </article>
+        <article class="itinerary">
+          <h3>Primeira aula de kitesurf</h3>
+          <p>Dedique duas horas à aula para iniciantes e combine o horário e o equipamento com a equipe.</p>
+          <a class="section-link" href="passeios.html" target="_blank" rel="noopener" data-it="Aula de kitesurf · 2 h" data-type="passeio" aria-label="Consultar a aula de kitesurf pelo WhatsApp">Consultar roteiro →</a>
+        </article>
+        <article class="itinerary">
+          <h3>Pôr do sol na duna</h3>
+          <p>Reserve o fim da tarde para subir a duna com um guia local e ver o sol baixar.</p>
+          <a class="section-link" href="passeios.html" target="_blank" rel="noopener" data-it="Pôr do sol na duna" data-type="passeio" aria-label="Consultar o passeio ao pôr do sol pelo WhatsApp">Consultar roteiro →</a>
+        </article>
+      </div>
     </div>
   </section>
 
